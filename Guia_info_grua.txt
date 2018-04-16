@@ -1,0 +1,72 @@
+[* RESUMEN *]
+
+clase TheScene : THREE.Scene{
+/* constructor de la ESCENA	*/		constructor(renderer)
+/* constructor de la cámara	*/		createCamera(renderer)
+/* constructor de iluminación	*/		createLights()
+/* constructor del Modelo		*/		createModel()
+
+/* Añadir caja a la escena 	*/		addBox(event, action) // --> Proviene de Ground
+/* Mover caja en la escena		*/		moveBox(event, action)// --> Proviene de Ground
+/* Cojer caja de la escena		*/		takeBox()				// --> Proviene de Ground
+/* Soltar caja */							dropBox()				// --> Proviene de Crane y Ground
+
+/* Actualización de los controles*/				animate(controls)
+/* Obtener la visión de la cámara*/				getCamera()
+/* Obtener los controles de la cámara*/		getCameraControls()
+/* Modificación de la vista de la cámara*/	setCameraAspect(anAspectRatio)
+
+[VARIABLES DE CLASE (Se escriben fuera de la clase)]
+	[MODOS]
+		NO_ACTION 		= 0;	// Sin acción.
+		ADDING_BOXES 	= 1;	// Modo añadir cajas
+		MOVING_BOXES 	= 2;	// Modo mover cajas
+
+	[ACCIONES]
+		NEW_BOX 			= 0;	// nueva caja
+		MOVE_BOX			= 1;	// mover caja
+		SELECT_BOX		= 2;	// seleccionar caja
+		ROTATE_BOX		= 3;	// girar caja
+		END_ACTION		= 10;	// salir de la acción
+}
+
+clase Crane : THREE.Objet3D{
+/* constructor de la grua */	constructor(parameters)
+	// parametres --> es una estructura { craneHeight, craneWidth, material }
+/* Longuitud de la cuerda */	computeStringLength()
+/* construcción de la base */	createBase()
+/* construcción del mástil */	createMast()
+/* construcción del brazo */	createJib()
+/* construcción de la pluma
+ * y el gancho */					createTrolleyStringHook()
+
+/* Modificador del braxo */	setJib(anAngle)
+/* Modificador de la pluma */	setTrolley(aDistance)
+/* Modificador del gancho */	setHook(aHeight)		// Solo la altura
+/* Modificador del gancho */	setHookPosition(angulo, distancia, altura)
+/* Modificador de la interacción */		setfeedBack(onOff)
+
+/* Muestra la posición del gancho */	getHookPosition(world)
+/* Coger caja */					takeBox(aBox)
+/* Soltar caja */					dropBox()
+
+[VARIABLES DE CLASE (Se escriben fuera de la clase)]
+Crane.WORLD = 0		// Coordenadas del mundo
+Crane.LOCAL = 1		// Coordenadas mastras (locales)
+
+}
+
+
+clase Ground : THREE.Objet3D{
+/* constructor del suelo */	constructor(anchura, profundidad, material, tamaño_de_la_caja)
+
+/* colisiones entre cajas */	intersectBoxes(box_1, box_2)
+/* Muestra las coordenadas del ratón */	getMouse(event)
+/* Devuelve la coord. del suelo donde el ratón clickó */	getPointOnGround(event)
+/* Actualiza altura de cajas */									updateHeightBoxes(k)		// Para simular que se apilan
+/* Añadir caja */		addBox(event, action)
+/* Mover caja */		moveBox(event, action)
+/* Coger caja */		takeBox(position)
+/* Soltar caja */		dropBox(aBox)
+
+}
