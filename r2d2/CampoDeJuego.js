@@ -45,7 +45,14 @@ class CampoDeJuego extends THREE.Object3D {
 
 
 /******************************************************************************/
-/* FUNCIONES Create (Creadoras de los objetos) ********************************/
+/* FUNCIONES Create (Creadoras de los objetos) ********************************
+ *
+ * create_campo				Crea la zona donde se moverán los meteoritos
+ * create_limites_de_zona	Crea cuatro esferas moradas que delimitan el campo.
+ * create_Ovo					Crea un objeto volante de color plano (salvo rojo y verde)
+ * create_meteoritos			Crea una lista de meteoritos de tamaño num_objetos_voladores
+ * create_camera_planta		Crea una cámara que visualiza la zona.
+ ******************************************************************************/
 /* Creación del campo de juego ************************************************/
 	create_campo(parameters){
 		// Extrayendo las dimensiones
@@ -58,16 +65,70 @@ class CampoDeJuego extends THREE.Object3D {
 		  new THREE.MeshBasicMaterial ({color: 0xff0000, wireframe:true, wireframeLinewidth:5})
 		  // wireframe muestra los triángulos de la malla
 		  // wireframeLinewidth indica el grosor de las aristas de los triángulos
-//		  new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)})
+		  // new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)})
 	  );
-/* Situando el campo de juego encima del suelo */
+	  /* Situando el campo de juego encima del suelo */
 	  campo.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(0.0, 0.5, 0.5));
 
-/* Dotando al campo de juego de transparencia */
+	  /* Dotando al campo de juego de transparencia */
 	  campo.material.transparent = true;
 	  campo.material.opacity = 0.2;
 	  this.campo_escalado = false;
 	  return campo;
+
+	}
+
+	create_limites_de_zona(){
+		var limites = new THREE.Object3D();
+		this.senial = new THREE.SphereGeometry(0.2, 16,16);
+		this.color_senial = new THREE.MeshPhongMaterial({color: 0xff00ff});
+
+		// Creando los elementos limítrofes traseros
+		this.inf_negX_back = new THREE.Mesh(this.senial, this.color_senial);
+		this.inf_posX_back = new THREE.Mesh(this.senial, this.color_senial);
+		this.sup_negX_back = new THREE.Mesh(this.senial, this.color_senial);
+		this.sup_posX_back = new THREE.Mesh(this.senial, this.color_senial);
+
+		// Creando los elementos limítrofes delanteros
+		this.inf_negX_front = new THREE.Mesh(this.senial, this.color_senial);
+		this.inf_posX_front = new THREE.Mesh(this.senial, this.color_senial);
+		this.sup_negX_front = new THREE.Mesh(this.senial, this.color_senial);
+		this.sup_posX_front = new THREE.Mesh(this.senial, this.color_senial);
+
+		// Añadiendo los elementos limítrofes al campo.
+		limites.add(this.inf_negX_back);
+		limites.add(this.inf_posX_back);
+		limites.add(this.sup_negX_back);
+		limites.add(this.sup_posX_back);
+
+		limites.add(this.inf_negX_front);
+		limites.add(this.inf_posX_front);
+		limites.add(this.sup_negX_front);
+		limites.add(this.sup_posX_front);
+		return limites;
+	}
+
+	create_Ovo(un_color){
+		var superficie = (un_color === undefined? 0xffff1a : un_color);
+		var texturador = new THREE.TextureLoader();
+		var material = new THREE.MeshPhongMaterial();
+
+		if(superficie === 0xff0000)
+		{ var material = new THREE.MeshPhongMaterial({map: texturador.load("imgs/fuego.JPG")});}
+		else if(superficie === 0x00ff00)
+		{ var material = new THREE.MeshPhongMaterial({map: texturador.load("imgs/cesped.jpg")});}
+		else
+		{ var material = new THREE.MeshPhongMaterial({color:superficie});}
+
+		this.tamanio_meteorito = 1.0;
+
+		var Objeto_volador = new THREE.SphereGeometry(this.tamanio_meteorito,10,10);
+		material.transparent = true;
+		var meteorito =new THREE.Mesh(Objeto_volador, material);
+		meteorito.colision = false;	// Al crearse aún no ha podido colisionar
+		meteorito.activo = false;		//	Al crearse aún no está en movimiento.
+
+		return meteorito;
 	}
 
 	create_meteoritos(cantidad){
@@ -86,19 +147,14 @@ class CampoDeJuego extends THREE.Object3D {
 				color = 0x00ff00;
 				peligroso = false;}
 
+			// Dotando al ObjetoVolador de atributos propios, color, velocidad y peligrosidas
+			// El color es otro inficador de peligrosidad pero un booleano aclara más.
 			var meteorito_iesimo = this.create_Ovo(color);
-			meteorito_iesimo.velocidad = 10 + Math.random()*i;
+			meteorito_iesimo.velocidad = 5 + Math.random()*i;
 			meteorito_iesimo.peligroso = peligroso;
 			lista_de_meteoritos.add(meteorito_iesimo);
 		}
-		/*
-		this.x=0; this.y=0; this.z=0;
-		this.meteorito_prueba = this.create_Ovo();
-		this.meteorito_prueba.velocidad = 10;
-		this.meteorito_prueba.peligroso = true;
-		this.activo = true;
-		this.meteorito_prueba.name = 'Meteorito de prueba'
-		*/
+
 /* Creados los meteoritos, deberia ser el momento de posicionarlos
 	Pero como la zona no se ha escalado a sus dimensiones finales.
 	Este posicionamiento debe realizarse despues,
@@ -106,33 +162,12 @@ class CampoDeJuego extends THREE.Object3D {
 */
 
 		// Devolviendo los meteoritos con sus respectivas coordenadas
-//		lista_de_meteoritos.add(this.meteorito_prueba);
 		this.meteoros_activos = lista_de_meteoritos.children.length;
 		return lista_de_meteoritos;
 	}
 
-	create_Ovo(un_color){
-		var superficie = (un_color === undefined? 0xffff1a : un_color);
-		var texturador = new THREE.TextureLoader();
-		var material = new THREE.MeshPhongMaterial();
 
-		if(superficie === 0xff0000)
-			{ var material = new THREE.MeshPhongMaterial({map: texturador.load("imgs/fuego.JPG")});}
-		else if(superficie === 0x00ff00)
-			{ var material = new THREE.MeshPhongMaterial({map: texturador.load("imgs/cesped.jpg")});}
-		else
-			{ var material = new THREE.MeshPhongMaterial({color:superficie});}
 
-		this.tamanio_meteorito = 1.0;
-
-		var Objeto_volador = new THREE.SphereGeometry(1.0,16,16);
-		material.transparent = true;
-		var meteorito =new THREE.Mesh(Objeto_volador, material);
-		meteorito.colision = false;	// Al crearse aún no ha podido colisionar
-		meteorito.activo = false;		//	Al crearse aún no está en movimiento.
-
-		return meteorito;
-	}
 /* Fin de creaciones **********************************************************/
 
 /******************************************************************************/
@@ -406,36 +441,6 @@ class CampoDeJuego extends THREE.Object3D {
 		return this.meteoros_activos;
 	}
 
-	create_limites_de_zona(){
-				var limites = new THREE.Object3D();
-				this.senial = new THREE.SphereGeometry(0.2, 16,16);
-				this.color_senial = new THREE.MeshPhongMaterial({color: 0xff00ff});
-
-				// Creando los elementos limítrofes traseros
-				this.inf_negX_back = new THREE.Mesh(this.senial, this.color_senial);
-				this.inf_posX_back = new THREE.Mesh(this.senial, this.color_senial);
-				this.sup_negX_back = new THREE.Mesh(this.senial, this.color_senial);
-				this.sup_posX_back = new THREE.Mesh(this.senial, this.color_senial);
-
-				// Creando los elementos limítrofes delanteros
-				this.inf_negX_front = new THREE.Mesh(this.senial, this.color_senial);
-				this.inf_posX_front = new THREE.Mesh(this.senial, this.color_senial);
-				this.sup_negX_front = new THREE.Mesh(this.senial, this.color_senial);
-				this.sup_posX_front = new THREE.Mesh(this.senial, this.color_senial);
-
-				// Añadiendo los elementos limítrofes al campo.
-				limites.add(this.inf_negX_back);
-				limites.add(this.inf_posX_back);
-				limites.add(this.sup_negX_back);
-				limites.add(this.sup_posX_back);
-
-				limites.add(this.inf_negX_front);
-				limites.add(this.inf_posX_front);
-				limites.add(this.sup_negX_front);
-				limites.add(this.sup_posX_front);
-		return limites;
-	}
-
 	set_limites_de_zona(){
 			var x_min = this.zona.position.x + this.zona.scale.x/2;
 			var y_max = this.zona.position.y + this.zona.scale.y;
@@ -487,14 +492,14 @@ class CampoDeJuego extends THREE.Object3D {
 			,frustumSize /( 2)	// abajo
 			, 10		// cercanía
 			, 200);	// lejanía
-
-//		this.camera_planta.rotation.y = Math.PI;
+		/* 	Tras crearse la cámara ésta mira hacia el ejeZ negativo
+		 * por ello debo orientala para que visualice el campo.
+		 */
 		camera_planta.position.set(0.0, 2*frustumSize, 20.0);
 		camera_planta.rotation.x = -Math.PI/2;
-//		var look = this.zona.position;
-//		var objetivo = this.zona.position;
-//		objetivo.z = -20;
-//		camera_planta.lookAt(objetivo);
+		// Para fijar la visión de la cámara sobre un punto.
+		//		var look = this.zona.position;
+		//		camera_planta.lookAt(look);
 		return camera_planta;
 	}
 

@@ -1,0 +1,63 @@
+/*   Desarrollar un sistema gráfico que incluya:
+ * 1] Un modelo jerárquico de un objeto articulado.
+ * 2] Objetos animados.
+ * 3] Interacción con el usuario.
+ * 4] Diferentes vistas
+ * 5] Fuentes de iluminación.
+ * 6] Materiales con y sin texturas
+ *
+ * RESUMEN:
+ *    Pilotar un robot con el objetivo de:
+ *  Esquivar objetos "malos"
+ *  Colisionar con objetos "buenos"
+ */
+
+ [1] Se modela una jerarquía y se la dota de movimiento.
+ Cada movimiento es un grado de libertad, lo que implica una variable que controle dicha libertad.
+ Se pide que:
+   *] gire la cabeza       => this.cabeza
+   *] inclide el cuerpo    => this.cuerpo_y_cabeza
+   *] alargue los brazos   => this.brazo_escalado_Xpos
+                           => this.brazo_escalado_Xneg
+
+ NOTA: Las dimensiones del robot son de libre elección,
+   para respetar la proporcionalidad del robot he decidido basar las dimensiones
+   en una longitud_base (inicialmente a 1.0 para simplificar los escalados
+   de los brazos y del propio tamaño del robot).
+
+ [2] Se modela el campo_de_juego y los objetos_volantes.
+ Cada objeto_volante se muestra en el lado opuesto al robot
+ recorriendo el campo de forma lineal
+ (Las prestaciones del pc no deben influir en la velocidad de los objetos volantes
+ Se toma como instante_anterior --> la creación de los objetos_volantes
+       y como instante_actual -->   la llamada a la función update,
+update es la responsable de actualizar de los elementos de la escena pertenecientes al campo_de_juego).
+IDEA:
+   campo_de_juego.update(controls){
+      Calcula la nueva posición de los meteoritos.
+      Verifica si han salido del campo para reincorporarlos
+      Verifica si han colisionado con el robot para
+         modificar su "VIDA" en caso de colisión
+            (caja_englobante_del_robot vs esfera_englobante_meteorito)
+         o aumentar el "SCORE" del robot en caso de esquivarlo
+      Verificar que el robot se encuentra dentro de la zona
+         (esfera_englobante_del_robot vs caja_englobante_del_campo_de_juego).
+   }
+
+   r2d2.update(constrols){
+      Mientras el robot indique que está activo --> r2d2.activo == true;
+      Gira_cabeza,   si el controls.gira_cabeza ha cambiado de valor.
+      Inclina_cuerpo,si el controls.se_inclina ha cambiado de valor.
+      Alarga_brazos, si el controls.sube_cuerpo ha cambiado de valor.
+      Cambia el tamaño del robot, si tamanio_droide ha cambiado.
+      Modifica la posición, si tamanio_droide ha cambiado.
+      Modifica dos centinelas que ayudan a visualizar la caja englobante del robot
+      Muestra un mensaje con la vida y el score
+      Verifica que la vida ea positiva, en otro caso, pone la vida a 0
+      y llama a descansando() para que r2d2.activo= false y muestra una pose "especial"
+   }
+
+ [3] Interacción con el usuario:
+ Se implementan las funcionalidades de movimiento del robot.
+ IDEA: script.js conoce si el usuario ha pulsado algún botón del teclado o del ratón.
+ Es en este archivo donde debe vigilarse dichas acciones. 
