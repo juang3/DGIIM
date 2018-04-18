@@ -33,7 +33,7 @@ function createGUI (withStats) {
     this.ver_esfera = false;
     this.ver_caja = false;
 
-    this.tamanio_campo = TAMANIO_BASE+2;
+    this.tamanio_campo = TAMANIO_BASE + 0.5 ;
     // Al crear el campo con la opción wireframe:true, puedo visualizarlo.
     this.ver_campo = true;
 
@@ -73,7 +73,13 @@ function createGUI (withStats) {
 	 var poseGrua = actions.add(GUIcontrols,'pose').name('Pose r2d2');
 
 var ver_campo_juego = gui.add(GUIcontrols,'ver_campo').name('Ver campo');
-gui.add (GUIcontrols, 'tamanio_campo', TAMANIO_MIN, TAMANIO_MAX,0.1).name('Campo de juego').listen();
+var tamanio = gui.add (GUIcontrols, 'tamanio_campo', TAMANIO_MIN, TAMANIO_MAX,0.1).name('Campo de juego').listen();
+/*   tamanio.onChange(function (value){
+      GUIcontrols.tamanio_campo = scene
+         .campo_de_juego
+         .set_Tamanio_campo(value-scene.campo_de_juego.dificultad)
+   })
+*/
 /*
     var takingBoxes = actions.add (GUIcontrols, 'takeBox').name ('Take the box below');
 	 takingBoxes.onChange (function (value) {
@@ -139,6 +145,7 @@ function setMessage (str) {
 function onMouseDown (event) {
   if (event.ctrlKey) {
 	 // The Trackballcontrol only works if Ctrl key is pressed
+
 	 scene.getCameraControls().enabled = true;
   } else {
 	 scene.getCameraControls().enabled = false;
@@ -272,19 +279,22 @@ function render() {
   var un_cuarto_alto  = window.innerHeight*0.25
   var tres_cuartos_ancho = window.innerWidth*0.75
   var tres_cuartos_alto  = window.innerHeight*0.75
-  
+
   renderViewport(scene, scene.getCamera_primera_persona(),
    0,0,
    tres_cuartos_ancho, tres_cuartos_alto);
 
   renderViewport(scene, scene.getCamera_general(),
-   tres_cuartos_ancho, tres_cuartos_alto,
+   tres_cuartos_ancho, 0,
    un_cuarto_ancho, un_cuarto_alto);
 
   renderViewport(scene, scene.r2d2.camera_3p,
    tres_cuartos_ancho, window.innerHeight*0.5,
    un_cuarto_ancho, un_cuarto_alto);
 
+  renderViewport(scene, scene.campo_de_juego.get_camera_planta(),
+   tres_cuartos_ancho, tres_cuartos_alto,
+   un_cuarto_ancho, un_cuarto_alto);
     /* NOTA:
      *   0.25 = 1/4
      *   0.50 = 2/4

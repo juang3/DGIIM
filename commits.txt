@@ -1,0 +1,36 @@
+commit f72b2782eb1a1e7d2c6bae200b9a76d5a9b2d945
+Author: Paal <losei.him.paal@gmail.com>
+Date:   Wed Apr 18 10:11:48 2018 +0200
+
+    first commit
+
+commit 0a9a548451573a9e6247903d5c85096cfc9221d6
+Merge: dc48591 10f08bb
+Author: Paal <losei.him.paal@gmail.com>
+Date:   Wed Apr 18 10:06:33 2018 +0200
+
+    Merge remote-tracking branch 'origin/master'
+
+commit 10f08bb0879938d7b02b344e2a5b9679d258c1c7
+Author: juang3 <juang3@correo.ugr.es>
+Date:   Wed Apr 18 09:33:44 2018 +0200
+
+    Rename Historico to Historico.md
+
+commit 706ccefa80766ad19bd8f124735e241dc8a1f62c
+Author: juang3 <juang3@correo.ugr.es>
+Date:   Wed Apr 18 09:32:51 2018 +0200
+
+    Create Historico
+
+commit b33ea8cc5d0a62b82f1c3d4ca70177767119bce1
+Author: juang3 <juang3@correo.ugr.es>
+Date:   Wed Apr 18 09:30:06 2018 +0200
+
+    Initial commit
+
+commit dc485912367ccf0eb980284c551dc11986931319
+Author: Paal <losei.him.paal@gmail.com>
+Date:   Mon Apr 16 10:11:18 2018 +0200
+
+    BackUp de la practica 2 (tiene la funcionalidad que se pide). Ahora toca ordenar el codigo

@@ -11,9 +11,10 @@ class TheScene extends THREE.Scene {
 	 // Attributes
 	 this.ambientLight = null;
 	 this.spotLight = null;
-	 this.camera = null;
+	 this.camera_general = null;
 	 this.trackballControls_vuelo = null;
 	 this.trackballControls_pp = null;		// Camara en primera persona
+	 this.trackballControls_planta = null;
 	 this.ground = null;
 	 this.r2d2 = null;
 	 this.campo_de_juego = null;
@@ -40,16 +41,16 @@ class TheScene extends THREE.Scene {
 	*/
 	// Visión esférica
   createCamera_vuelo (renderer) {
-	 this.camera = new THREE.PerspectiveCamera(
+	 this.camera_general = new THREE.PerspectiveCamera(
 		45, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-	 this.camera.position.set (60, 30, 60);
+	 this.camera_general.position.set (60, 30, 60);
 	 var look = new THREE.Vector3 (0,20,0);      // FIXMI: ¿A qué hacen referencia?
-	 this.camera.lookAt(look);                   // Actualización de la matriz de proyección??
+	 this.camera_general.lookAt(look);                   // Actualización de la matriz de proyección??
 
 
-	 this.trackballControls_vuelo=this.createTrackballControls(this.camera, look, renderer);
-	 this.add(this.camera);
+	 this.trackballControls_vuelo=this.createTrackballControls(this.camera_general, look, renderer);
+	 this.add(this.camera_general);
   }
 
   createTrackballControls(camera, objetivo, renderer){
@@ -64,12 +65,13 @@ class TheScene extends THREE.Scene {
    * Una que sea como mirar desde la lente de r2d2
 	* Otra detrás de r2d2 para verle a él y los meteoritos que le vienen de frente
    */
-	createCamera_primera_persona(camera){
+	createCamera_planta(renderer){
+		this.trackballControls_vuelo=this.createTrackballControls(
+			this.campo_de_juego.get_camera_planta()
+			, this.campo_de_juego.position
+			, renderer);
 
-//		var look = new THREE.Vector3 (0,20,0);      // FIXMI: ¿A qué hacen referencia?
-//  	 	this.r2d2.camera_lente.lookAt(look);
-
-//		this.add(this.primera_persona)
+		this.add(this.camera_planta);
 	}
   /// It creates lights and adds them to the graph
   createLights () {
@@ -235,7 +237,7 @@ model.add(new Ambiente());
 	* @return The camera
 	*/
   getCamera_general () {
-	 return this.camera;
+	 return this.camera_general;
   }
 
   /**
@@ -261,8 +263,8 @@ model.add(new Ambiente());
 	* @param anAspectRatio - The new aspect ratio for the camera
 	*/
   setCameraAspect (anAspectRatio) {
-	 this.camera.aspect = anAspectRatio;
-	 this.camera.updateProjectionMatrix();
+	 this.camera_general.aspect = anAspectRatio;
+	 this.camera_general.updateProjectionMatrix();
   }
 
 }

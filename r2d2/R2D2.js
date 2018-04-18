@@ -584,10 +584,10 @@ update(movimientos){
 		+ '<br> Score: '+ this.score.cantidad+'</verde>');
 	//		this.set_resistencia(valor_de_colision);
 	// Cuando r2d2 se queda sin resistencia, éste se tumba.
-//	console.log('\n Cantidad: '+this.resistencia.cantidad);
-//	console.log(' Score: '+ this.score.cantidad);
-//	console.log(window.innerWidth);
-	//		console.log(this.vida_total)
+	if(this.resistencia.cantidad<0){
+		this.resistencia.cantidad = 0;
+		this.descansando();
+	}
 }
 
 incrementar_score(numero){

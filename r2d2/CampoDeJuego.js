@@ -3,32 +3,41 @@
  * @param parameters - Incluye parámetros de tamaño y material
  * @param parameters.longitud_X - Distancia entre las lineas de fondo de los adversarios.
  * @param parameters.longitud_Z - Longitud de las lineas de fondo.
- * @param parameters.longitud_Y  - Distancia máxima al suelo
+ * @param parameters.longitud_Y - Distancia máxima al suelo
+ * @param num_objetos_voladores - Indica la cantidad de meteoritos a crear.
  */
 
 class CampoDeJuego extends THREE.Object3D {
 	constructor(parameters, num_objetos_voladores){
 		super();
 
-		// Creando elementos y dándoles nombre
+
+		// Creando el campo y le doy nombre
 		this.zona = this.create_campo(parameters);
 		this.zona.name = "zona de juego";
 
+		// Creando el gestor de meteoritos y dándole nombre
 		this.gestor_de_meteoritos = this.create_meteoritos(num_objetos_voladores);
 		this.gestor_de_meteoritos.name='gestor_de_meteoritos';
 
-		// Creando limites visuales de la zona
+		// Creando limites visuales de la zona y dándole nombre
 		this.limites_de_zona = this.create_limites_de_zona();
 		this.limites_de_zona.name ='limites de zona';
+
+		// Creando una cámara con perspectiva en planta
+		this.camera_planta = this.create_camera_planta();
+
 
 		// Añadiendo los elementos a la instancia (al objeto CampoDeJuego)
 		this.add(this.zona);
 		this.add(this.gestor_de_meteoritos);
 		this.add(this.limites_de_zona);
+		this.add(this.camera_planta);
 
 //	console.log(this);
 		this.tiempo_anterior = Date.now();
 		this.milisegundos = 1000;
+		this.dificultad = 0.0;
 
 		// Cambios de estado del meteorito
 		this.color_impacto = new THREE.Color(0x0000ff);
@@ -46,7 +55,7 @@ class CampoDeJuego extends THREE.Object3D {
 
 		var campo = new THREE.Mesh (
 		  new THREE.BoxGeometry (1.0, 1.0, 1.0),
-		  new THREE.MeshBasicMaterial ({color: 0xff0000, wireframe:true, wireframeLinewidth:10})
+		  new THREE.MeshBasicMaterial ({color: 0xff0000, wireframe:true, wireframeLinewidth:5})
 		  // wireframe muestra los triángulos de la malla
 		  // wireframeLinewidth indica el grosor de las aristas de los triángulos
 //		  new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)})
@@ -57,7 +66,6 @@ class CampoDeJuego extends THREE.Object3D {
 /* Dotando al campo de juego de transparencia */
 	  campo.material.transparent = true;
 	  campo.material.opacity = 0.2;
-
 	  this.campo_escalado = false;
 	  return campo;
 	}
@@ -79,7 +87,7 @@ class CampoDeJuego extends THREE.Object3D {
 				peligroso = false;}
 
 			var meteorito_iesimo = this.create_Ovo(color);
-			meteorito_iesimo.velocidad = 5 + Math.random()*i;
+			meteorito_iesimo.velocidad = 10 + Math.random()*i;
 			meteorito_iesimo.peligroso = peligroso;
 			lista_de_meteoritos.add(meteorito_iesimo);
 		}
@@ -199,6 +207,7 @@ class CampoDeJuego extends THREE.Object3D {
 	/* 	Falta verifcar si hay colisiones con otros objetos
 	 * para ello necesito las coordenadas del frontal del dichos objetos
 	 */
+	 console.log(this.dificultad)
 	 return this.meteoros_activos;
 	}
 
@@ -340,11 +349,13 @@ class CampoDeJuego extends THREE.Object3D {
 
 				if(r2d2.activo){
 					if(!meteoro.colision)
-					{r2d2.incrementar_score(1);}
+					{r2d2.incrementar_score(1);
+					 this.dificultad += 0.05;
+					}
 					else
 					{meteoro.colision = false;}
 
-					meteoro.velocidad += Math.random();
+					meteoro.velocidad = meteoro.velocidad + Math.random() + this.dificultad;
 					meteoro.activo = true;
 /*
 					if(meteoro.peligroso)
@@ -464,5 +475,30 @@ class CampoDeJuego extends THREE.Object3D {
 		 * 		pos_x-radio <this.inf_negX_back.position.x
 		 * 	Cuando r2d2 sale completamente de la barrera, es desactivado.
 		 */
+	}
+	// PRE: La cámara necesita saber donde está la zona a observar.
+	create_camera_planta(){
+//		var aspect = window.innerWidth/window.innerHeight;
+		var frustumSize = 50 	// tamanio del tronco
+		var camera_planta = new THREE.OrthographicCamera(
+			frustumSize / ( 2)	// izquierda
+			,frustumSize / (-2)	// derecha
+			,frustumSize /(-2)	// arriba
+			,frustumSize /( 2)	// abajo
+			, 10		// cercanía
+			, 200);	// lejanía
+
+//		this.camera_planta.rotation.y = Math.PI;
+		camera_planta.position.set(0.0, 2*frustumSize, 20.0);
+		camera_planta.rotation.x = -Math.PI/2;
+//		var look = this.zona.position;
+//		var objetivo = this.zona.position;
+//		objetivo.z = -20;
+//		camera_planta.lookAt(objetivo);
+		return camera_planta;
+	}
+
+	get_camera_planta(){
+		return this.camera_planta;
 	}
 }
