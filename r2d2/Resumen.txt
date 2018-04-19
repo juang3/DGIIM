@@ -1,0 +1,159 @@
+/*   Desarrollar un sistema gráfico que incluya:
+ * 1] Un modelo jerárquico de un objeto articulado.
+ * 2] Objetos animados.
+ * 3] Interacción con el usuario.
+ * 4] Diferentes vistas
+ * 5] Fuentes de iluminación.
+ * 6] Materiales con y sin texturas
+ *
+ * RESUMEN:
+ *    Pilotar un robot con el objetivo de:
+ *  Esquivar objetos "malos"
+ *  Colisionar con objetos "buenos"
+ */
+
+ [1] Se modela una jerarquía y se la dota de movimiento.
+ Cada movimiento es un grado de libertad, lo que implica una variable que controle dicha libertad.
+ Se pide que:
+	*] gire la cabeza       => this.cabeza
+	*] inclide el cuerpo    => this.cuerpo_y_cabeza
+	*] alargue los brazos   => this.brazo_escalado_Xpos
+									=> this.brazo_escalado_Xneg
+
+ NOTA: Las dimensiones del robot son de libre elección,
+	para respetar la proporcionalidad del robot he decidido basar las dimensiones
+	en una longitud_base (inicialmente a 1.0 para simplificar los escalados
+	de los brazos y del propio tamaño del robot).
+update es la responsable de actualizar los elemenots de la escena pertenecientes al robot.
+
+ [2] Se modela el campo_de_juego y los objetos_volantes.
+ Cada objeto_volante se muestra en el lado opuesto al robot
+ recorriendo el campo de forma lineal
+ (Las prestaciones del pc no deben influir en la velocidad de los objetos volantes
+ Se toma como instante_anterior --> la creación de los objetos_volantes
+		 y como instante_actual -->   la llamada a la función update,
+												y antes de terminar, se reasigna instante_anterior con el valor de instante_actual
+update es la responsable de actualizar los elementos de la escena pertenecientes al campo_de_juego).
+
+IDEA:
+	campo_de_juego.update(controls){
+		Calcula la nueva posición de los meteoritos.
+		Verifica si han salido del campo para reincorporarlos
+		Verifica si han colisionado con el robot para
+			modificar su "VIDA" en caso de colisión
+				(caja_englobante_del_robot vs esfera_englobante_meteorito)
+			o aumentar el "SCORE" del robot en caso de esquivarlo
+		Verificar que el robot se encuentra dentro de la zona
+			(esfera_englobante_del_robot vs caja_englobante_del_campo_de_juego).
+	}
+
+	r2d2.update(constrols){
+		Mientras el robot indique que está activo --> r2d2.activo == true;
+		+] Gira_cabeza,   si el controls.gira_cabeza ha cambiado de valor.
+		+] Inclina_cuerpo,si el controls.se_inclina ha cambiado de valor.
+		+] Alarga_brazos, si el controls.sube_cuerpo ha cambiado de valor.
+		+] Cambia el tamaño del robot, si tamanio_droide ha cambiado.
+		+] Modifica la posición, si tamanio_droide ha cambiado.
+		+] Modifica dos centinelas que ayudan a visualizar la caja englobante del robot
+		+] Muestra un mensaje con la vida y el score
+		+] Verifica que la vida ea positiva, en otro caso, pone la vida a 0
+		y llama a descansando() para que r2d2.activo= false y muestra una pose "especial"
+	}
+
+	scene.animate(GUIcontrols){
+		Mientras el robot indique que está activo --> r2d2.activo == true
+		+] Reasigna los valores del cuadro (de interacción del usuario) con las
+		variables de la escena (scene)
+			luz ambiental,    this.ambientLight    ---> GUIcontrols.ambientLight
+			luz direcional,   this.spotLight       ---> GUIcontrols.spotLight
+			luz focal,        this.foco2           ---> GUIcontrols.foco2
+			ejes,             this.axis            ---> GUIcontrols.axis
+			ver elementos englobantes del robot,
+						this.r2d2.esfera_englobante	---> GUIcontrols.ver_esfera
+						this.r2d2.caja_englobante		---> GUIcontrols.ver_caja
+			ver elementos englobantes del ccampo de juego,
+						this.campo_de_juego.zona		---> GUIcontrols.ver_campo
+
+		+] Llama a los updates de los elementos de la escena
+			 this.r2d2.update(controls)
+			 this.campo_de_juego.update(this.r2d2)
+
+	}
+
+ [3] Interacción con el usuario:
+ Se implementan las funcionalidades de movimiento del robot.
+ Se implementan las funcionalidades de cambio de tamaño del campo_de_juego
+ IDEA: script.js conoce cuando el usuario ha pulsado algún botón del teclado o del ratón.
+ Es en este archivo donde debe vigilarse dichas acciones.
+ En el MAIN del programa se incluyen las llamada Listener para captar las acciones
+ 		windows.addEventListener("nombre_evento", nombre_funcion)
+ Esta sentencia llama a la función relacionada con el evento captado.
+ En esta práctica están:
+	"resize",   	onWindowResize
+	"mousemove",	onMouseMove
+	"mousedown",	onMouseDown
+	"mouseup",		onMouseUp
+	"mousewheel",	onMouseWheel
+	"keydown",		onKeyDown	---> Cada tecla representa un movimiento distinto.
+
+ Los GUIcontrols tambien se crean y se gestionan en script.js (Interacción con usuario)
+
+[4] Diferentes vistas.
+Hay cuatro vistas diferentes del mismo escenario.
+ +] Una cámara en perspectiva en primera persona,
+ +] Una cámara en perspectiva en tercera persona,
+ +] Una cámara en perspectiva en modo vuelo (recorrido esférico)
+ +] Una cámara en Orthogonal  en planta.
+
+ Todas las cámaras al crearse:
+ 		No tienen un objetivo al cual mirar.
+ 		Se situa en el (0,0,0)
+		Miran hacia negZ
+
+ 	Para "primera persona"
+		No se necesita un objetivo al cual mirar.
+		Se situa cerca de la lente del robot
+		Debe rotarse para mirar hacia el interior del campo_de_juego.
+
+	Para "tercera persona"
+		La atención se centra en el robot.
+		Se situa detrás del robot
+		Debe rotarse y transladarse para ver al robot y parte del campo_de_juego
+
+	Para "vuelo"
+		La atención se centra en un punto para obitar sobre él
+		Se situa fuera del campo_de_juego para poder ver la escena desde "lejos"
+
+	Para "planta"
+		No se nesecita un objetivo a mirar.
+		Se situa encima del campo_de_juego.
+		Se rota para observar el campo_de_juego y los movimientos del robot.
+
+[5] Fuentes de iluminación.
+ Hay tres fuentes de iluminación
+ 	+] Ambiental.
+		Para dotar de un poco de luz a la escena.
+
+	+] Focal blanca
+		Para iluminar una zona concreta de la escena y crear sombras
+	+] Focal roja
+		Para iluminar la escena con luz roja.
+
+	+] En la lente del robot
+		Para iluminar el suelo cercano (SOLO visible con superficie no negra)
+		(para direccionar la luz, se puede utilizar looktAt o target
+		 foco.lookAt(objetivo_a_mirar		(la dirección varia, si el objetivo se mueve))
+		 foco.target = dirección_de_la_luz 	(la dirección no cambia))
+
+[6] Materiales con y sin texturas.
+ Hay cuatro texturas. (PREVIO: var loader = new THREE.TextureLoader();)
+ 	+] El suelo --> textura = loader.load ("imgs/wood.jpg");
+	+] El robot --> textura = loader.load ("imgs/blanco_punteado.png")
+ 	+] El meteorito "malo"	--> textura = loader.load("imgs/fuego.JPG")
+	+] El meteorito "bueno"	--> textura = loader.load("imgs/cesped.jpg")
+
+ Para añadir material: 	material = new THREE.MeshPhongMaterial({map: textura})
+ 								elemento = new THREE.Mesh(Geometria, material)
+
+ Para añadir color:		material = new THREE.MeshPhongMaterial({color:0xrrggbb})
+ 								elemento = new THREE.Mesh(Geometria, material)
