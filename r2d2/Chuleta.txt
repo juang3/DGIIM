@@ -139,5 +139,21 @@ Hay cuatro vistas diferentes del mismo escenario.
 	+] Focal roja
 		Para iluminar la escena con luz roja.
 
-	+] En la lente del robot 
-		Para iluminar el suelo cercano
+	+] En la lente del robot
+		Para iluminar el suelo cercano (SOLO visible con superficie no negra)
+		(para direccionar la luz, se puede utilizar looktAt o target
+		 foco.lookAt(objetivo_a_mirar		(la dirección varia, si el objetivo se mueve))
+		 foco.target = dirección_de_la_luz 	(la dirección no cambia))
+
+[6] Materiales con y sin texturas.
+ Hay cuatro texturas. (PREVIO: var loader = new THREE.TextureLoader();)
+ 	+] El suelo --> textura = loader.load ("imgs/wood.jpg");
+	+] El robot --> textura = loader.load ("imgs/blanco_punteado.png")
+ 	+] El meteorito "malo"	--> textura = loader.load("imgs/fuego.JPG")
+	+] El meteorito "bueno"	--> textura = loader.load("imgs/cesped.jpg")
+
+ Para añadir material: 	material = new THREE.MeshPhongMaterial({map: textura})
+ 								elemento = new THREE.Mesh(Geometria, material)
+
+ Para añadir color:		material = new THREE.MeshPhongMaterial({color:0xrrggbb})
+ 								elemento = new THREE.Mesh(Geometria, material)
