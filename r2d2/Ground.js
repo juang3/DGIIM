@@ -30,8 +30,7 @@ class Ground extends THREE.Object3D {
 	 this.ground.applyMatrix (new THREE.Matrix4().makeTranslation (0,-0.1,0));
 	 this.ground.receiveShadow = true;
 	 this.ground.autoUpdateMatrix = false;
-// Trasparencia del suelo
-//	 this.ground.material.transparent = true;
+    
 	 this.add (this.ground);
 
 	 this.boxes = new THREE.Object3D();

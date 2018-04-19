@@ -110,7 +110,7 @@ class TheScene extends THREE.Scene {
 	 var textura = loader.load ("imgs/wood.jpg");
 	 var material_superficie = new THREE.MeshPhongMaterial({map: textura});
 	 material_superficie.transparent = true;
-	 material_superficie.opacity = 0.0;
+	 material_superficie.opacity = 0.9;
 
 // Creando el suelo
 	 this.ground = new Ground (300, 300, material_superficie, 4);

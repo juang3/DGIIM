@@ -298,6 +298,7 @@ class CampoDeJuego extends THREE.Object3D {
 
 			if(meteoro.colision){
 				meteoro.activo = false;
+				meteoro.material.opacity = 0.0;
 				if(meteoro.peligroso)
 					{return radio;}
 				else
@@ -358,18 +359,7 @@ class CampoDeJuego extends THREE.Object3D {
 		 * para saber si el meteorito se encuentra dentro o fuera de ésta.
 		 * Para ello he implementado: create_limites_de_zona, set_limites_de_zona.
 		 */
-/* 	// Codigo de prueba.
-		 if(this.meteorito_prueba.material.opacity<=0){
-			 this.meteorito_prueba.velocidad = 0;
-			 var pos = this.coordenadas();
-			 this.meteorito_prueba.position.set(pos.x, pos.y, pos.z);}
 
-		 if(this.meteorito_prueba.position.z+this.meteorito_prueba.scale.z <0.0){
-			 this.meteorito_prueba.material.opacity -= 0.1;}
-		 else{
-			 this.meteorito_prueba.material.opacity += 0.03;
-		 }
-*/
 		for (var i = 0; i < this.gestor_de_meteoritos.children.length; i++) {
 			var meteoro = this.gestor_de_meteoritos.children[i];
 

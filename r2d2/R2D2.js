@@ -279,7 +279,7 @@ class R2D2 extends THREE.Object3D {
 		 * por ese motivo creo conveniente, crear y añadir en este movimiento
 		 * dicha luz.
 		 */
-		 var foco = new THREE.SpotLight();
+		 var foco = new THREE.SpotLight(0x00ff00, 1);
 		 foco.position.set( 0, this.longitud_base/2, 0 );		// Posicionando el foco
 		 foco.angle = R2D2.NOVENTA/3;
 		 foco.castShadow = true;                    			// Indicando Sombra arrojada
@@ -297,9 +297,14 @@ class R2D2 extends THREE.Object3D {
 		  */
 		 var target = new THREE.Object3D();
 		 foco.target = target;
-		 target.position.set(0, 1, 1);
-			 // this.longitud_base);
-		 foco.add(target);
+		 target.position.set(0, 1,
+//			  1);
+			 2*this.longitud_base);
+		 this.add(target);
+// FIXMI: PORQUÉ no puedo anclar el target al ojo o al foco?
+// ¿Porqué debe ser a la escena?
+//		 ojo.add(target);
+
 		 ojo.add(foco)
 
 		 ojo.position.set(x, y, z);

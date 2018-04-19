@@ -229,17 +229,17 @@ function onMouseWheel (event) {
 }
 
 // IDEA Movimiento por teclas.
-function onPressKey(event){
+function onKeyDown(event){
    if(scene.animacion_activa){
       var x = event.which || event.keyCode;
 
       switch (x) {
          case 37:
-            scene.r2d2.gira_hacia_izquierda(0.2);break;
+            scene.r2d2.gira_hacia_izquierda(0.25);break;
          case 38:
             scene.r2d2.avanza(1);break;
          case 39:
-            scene.r2d2.gira_hacia_izquierda(-0.2);break;
+            scene.r2d2.gira_hacia_izquierda(-0.25);break;
          case 40:
             scene.r2d2.avanza(-1);break;
          default:
@@ -339,7 +339,7 @@ $(function () {
   window.addEventListener ("DOMMouseScroll", onMouseWheel, true); // For Firefox
 
   // IDEA Falta poner los Listener para mover a r2d2
-  window.addEventListener ("keydown", onPressKey, true);
+  window.addEventListener ("keydown", onKeyDown, true);
 
   // create a scene, that will hold all our elements such as objects, cameras and lights.
   scene = new TheScene (renderer.domElement);
