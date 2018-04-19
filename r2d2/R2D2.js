@@ -584,9 +584,7 @@ update(movimientos){
 //	console.log(this.camera_lente.position)
 //	console.log(this.lente.position)
 	// Creada la etiqueta en index.html
-	setMessage(
-		'<verde>Vida: '+this.resistencia.cantidad
-		+ '<br> Score: '+ this.score.cantidad+'</verde>');
+	
 	//		this.set_resistencia(valor_de_colision);
 	// Cuando r2d2 se queda sin resistencia, éste se tumba.
 	if(this.resistencia.cantidad<0){

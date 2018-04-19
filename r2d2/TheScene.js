@@ -203,10 +203,20 @@ model.add(new Ambiente());
 		this.campo_de_juego.zona.visible = controls.ver_campo;
 		this.r2d2.update(controls);
 		this.campo_de_juego.update(this.r2d2);
+		this.ground.material.opacity = controls.opacidad_del_suelo;
+
+		setMessage(
+			'<verde>Vida: '  + this.r2d2.resistencia.cantidad
+			+ '<br> Score: ' + this.r2d2.score.cantidad
+			+ '<br> Nivel: ' + this.campo_de_juego.dificultad/controls.tamanio_campo
+			+ '</verde>');
 	}
 	else{
 		this.ambientLight.visible = false;
-		setMessage('<verde>Game Over <br> Score: '+this.r2d2.score.cantidad+'</verde>');
+		setMessage(
+			'<verde> Game Over <br> Score: '+ this.r2d2.score.cantidad
+			+ '<br> Nivel: ' + this.campo_de_juego.dificultad/controls.tamanio_campo
+			+'</verde>');
 	}
 /* Reflexión sobre la ilustración de la vida de r2d2:
  *		Cuando un meteorito impacta sobre el personaje,
