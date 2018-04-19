@@ -69,8 +69,8 @@ function createGUI (withStats) {
 /*S2.8*/ axisLights.add(GUIcontrols,'ambientLight').name('Luz ambiental');
 
   var actions = gui.addFolder ('Actions');
-	 var addingBoxes = actions.add(GUIcontrols, 'addBox').name (': Adding boxes :');
-	 var movingBoxes = actions.add (GUIcontrols, 'moveBox').name (': Move and rotate boxes :');
+//	 var addingBoxes = actions.add(GUIcontrols, 'addBox').name (': Adding boxes :');
+//	 var movingBoxes = actions.add (GUIcontrols, 'moveBox').name (': Move and rotate boxes :');
 	 var poseGrua = actions.add(GUIcontrols,'pose').name('Pose r2d2');
 
 var ver_campo_juego = gui.add(GUIcontrols,'ver_campo').name('Ver campo');
@@ -145,89 +145,35 @@ function setMessage (str) {
  * @param event - Mouse information
  */
 function onMouseDown (event) {
-  if (event.ctrlKey) {
+   if (event.ctrlKey) {
 	 // The Trackballcontrol only works if Ctrl key is pressed
-
-	 scene.getCameraControls().enabled = true;
-  } else {
-	 scene.getCameraControls().enabled = false;
-	 if (event.button === 0) {   // Left button
-		mouseDown = true;
-		switch (applicationMode) {
-		  case TheScene.ADDING_BOXES :
-			 scene.addBox (event, TheScene.NEW_BOX);
-			 break;
-		  case TheScene.MOVING_BOXES :
-			 scene.moveBox (event, TheScene.SELECT_BOX);
-			 break;
-		  default :
-			 applicationMode = TheScene.NO_ACTION;
-			 break;
-		}
-	 } else {
-		setMessage ("");
-		applicationMode = TheScene.NO_ACTION;
-	 }
-  }
+	 scene.getCameraControls().enabled = true;   }
+   else {
+	 scene.getCameraControls().enabled = false;}
 }
 
 /// It processes the drag of the mouse
 /**
  * @param event - Mouse information
  */
-function onMouseMove (event) {
-  if (mouseDown) {
-	 switch (applicationMode) {
-		case TheScene.ADDING_BOXES :
-		case TheScene.MOVING_BOXES :
-		  scene.moveBox (event, TheScene.MOVE_BOX);
-		  break;
-		default :
-		  applicationMode = TheScene.NO_ACTION;
-		  break;
-	 }
-  }
-}
+function onMouseMove (event) {}
 
 /// It processes the clic-up of the mouse
 /**
  * @param event - Mouse information
  */
-function onMouseUp (event) {
-  if (mouseDown) {
-	 switch (applicationMode) {
-		case TheScene.ADDING_BOXES :
-		  scene.addBox (event, TheScene.END_ACTION);
-		  break;
-		case TheScene.MOVING_BOXES :
-		  scene.moveBox (event, TheScene.END_ACTION);
-		  break;
-		default :
-		  applicationMode = TheScene.NO_ACTION;
-		  break;
-	 }
-	 mouseDown = false;
-  }
-}
+function onMouseUp (event) {}
 
 /// It processes the wheel rolling of the mouse
 /**
  * @param event - Mouse information
  */
 function onMouseWheel (event) {
-  if (event.ctrlKey) {
+   if (event.ctrlKey) {
 	 // The Trackballcontrol only works if Ctrl key is pressed
-	 scene.getCameraControls().enabled = true;
-  } else {
-	 scene.getCameraControls().enabled = false;
-	 if (mouseDown) {
-		switch (applicationMode) {
-		  case TheScene.MOVING_BOXES :
-			 scene.moveBox (event, TheScene.ROTATE_BOX);
-			 break;
-		}
-	 }
-  }
+    scene.getCameraControls().enabled = true;  }
+   else {
+	 scene.getCameraControls().enabled = false;  }
 }
 
 // IDEA Movimiento por teclas.
@@ -335,9 +281,9 @@ $(function () {
   $("#WebGL-output").append(renderer.domElement);
   // liseners
   window.addEventListener ("resize", onWindowResize);
-  window.addEventListener ("mousemove", onMouseMove, true);
-  window.addEventListener ("mousedown", onMouseDown, true);
-  window.addEventListener ("mouseup", onMouseUp, true);
+//  window.addEventListener ("mousemove", onMouseMove, true);
+//  window.addEventListener ("mousedown", onMouseDown, true);
+//  window.addEventListener ("mouseup", onMouseUp, true);
   window.addEventListener ("mousewheel", onMouseWheel, true);   // For Chrome an others
   window.addEventListener ("DOMMouseScroll", onMouseWheel, true); // For Firefox
 
