@@ -36,6 +36,7 @@ function createGUI (withStats) {
     this.tamanio_campo = TAMANIO_BASE + 0.5 ;
     // Al crear el campo con la opción wireframe:true, puedo visualizarlo.
     this.ver_campo = true;
+    this.opacidad_del_suelo = 0.5;
 
 /*S2.10*/	 this.grosor = 1;
 	 this.addBox   = function () {
@@ -74,6 +75,7 @@ function createGUI (withStats) {
 
 var ver_campo_juego = gui.add(GUIcontrols,'ver_campo').name('Ver campo');
 var tamanio = gui.add (GUIcontrols, 'tamanio_campo', TAMANIO_MIN, TAMANIO_MAX,0.1).name('Campo de juego').listen();
+var suelo = gui.add(GUIcontrols, 'opacidad_del_suelo', 0.0, 1.0, 0.1).name('Opacidad del suelo').listen();
 /*   tamanio.onChange(function (value){
       GUIcontrols.tamanio_campo = scene
          .campo_de_juego
@@ -260,6 +262,7 @@ function onWindowResize () {
 function createRenderer () {
   var renderer = new THREE.WebGLRenderer();
 //IDEA: Necesito un fondo negro para simular el vacío del espacio
+//Fondo espacio negro ( Agua cristalina 0x00f0f0 )
   renderer.setClearColor(new THREE.Color(0x000000), 1.0);
 //  renderer.setClearColor(new THREE.Color(0xEEEEEE), 1.0);
   renderer.setSize(window.innerWidth, window.innerHeight);
@@ -283,7 +286,7 @@ function render() {
   renderViewport(scene, scene.getCamera_primera_persona(),
    0,0,
    tres_cuartos_ancho, tres_cuartos_alto);
-
+//   window.innerWidth, window.innerHeight);
   renderViewport(scene, scene.getCamera_general(),
    tres_cuartos_ancho, 0,
    un_cuarto_ancho, un_cuarto_alto);
