@@ -242,7 +242,7 @@ class CampoDeJuego extends THREE.Object3D {
 	/* 	Falta verifcar si hay colisiones con otros objetos
 	 * para ello necesito las coordenadas del frontal del dichos objetos
 	 */
-	 console.log(this.dificultad)
+	 //console.log(this.dificultad)
 	 return this.meteoros_activos;
 	}
 

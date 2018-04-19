@@ -571,7 +571,7 @@ class R2D2 extends THREE.Object3D {
 *******************************************************************************/
 /* INTERFAZ *******************************************************************/
 update(movimientos){
-	console.log(this.activo);
+	//console.log(this.activo);
 	if(this.activo){
 	this.set_Gira_Cabeza(movimientos.gira_cabeza);
 	this.set_Inclinar_Cuerpo(movimientos.se_inclina);
@@ -584,7 +584,7 @@ update(movimientos){
 //	console.log(this.camera_lente.position)
 //	console.log(this.lente.position)
 	// Creada la etiqueta en index.html
-	
+
 	//		this.set_resistencia(valor_de_colision);
 	// Cuando r2d2 se queda sin resistencia, éste se tumba.
 	if(this.resistencia.cantidad<0){
