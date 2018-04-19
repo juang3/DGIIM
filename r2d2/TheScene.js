@@ -208,14 +208,14 @@ model.add(new Ambiente());
 		setMessage(
 			'<verde>Vida: '  + this.r2d2.resistencia.cantidad
 			+ '<br> Score: ' + this.r2d2.score.cantidad
-			+ '<br> Nivel: ' + this.campo_de_juego.dificultad/controls.tamanio_campo
+			+ '<br> Nivel: ' + this.campo_de_juego.dificultad*controls.tamanio_droide/controls.tamanio_campo
 			+ '</verde>');
 	}
 	else{
 		this.ambientLight.visible = false;
 		setMessage(
 			'<verde> Game Over <br> Score: '+ this.r2d2.score.cantidad
-			+ '<br> Nivel: ' + this.campo_de_juego.dificultad/controls.tamanio_campo
+			+ '<br> Nivel: ' + this.campo_de_juego.dificultad*controls.tamanio_droide/controls.tamanio_campo
 			+'</verde>');
 	}
 /* Reflexión sobre la ilustración de la vida de r2d2:
