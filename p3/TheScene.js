@@ -156,7 +156,7 @@ class TheScene extends THREE.Scene {
   /**
 	* @return The camera
 	*/
-  getCamera_general () {
+  getCamera () {
 	 return this.camera_general;
   }
 
@@ -185,6 +185,7 @@ class TheScene extends THREE.Scene {
   TheScene.NO_ACTION = 0;
   TheScene.ADDING_BOXES = 1;
   TheScene.MOVING_BOXES = 2;
+  TheScene.OBJETIVE_BOX = 3;
 
   // Actions
   TheScene.NEW_BOX = 0;
@@ -192,3 +193,6 @@ class TheScene extends THREE.Scene {
   TheScene.SELECT_BOX = 2;
   TheScene.ROTATE_BOX = 3;
   TheScene.END_ACTION = 10;
+
+  // Límites
+  TheScene.TOPE_DE_ELEMENTOS = 10;

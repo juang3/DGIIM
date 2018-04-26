@@ -34,6 +34,9 @@ class Ground extends THREE.Object3D {
 
 	 this.boxes = new THREE.Object3D();
 	 this.add (this.boxes);
+
+	 // Contador de elementos en el escenario
+	 this.elementos = 0;
   }
   /// Whether the boxes b1 and b2 intersect or not
   /**
@@ -90,6 +93,34 @@ class Ground extends THREE.Object3D {
 		}
 	 }
   }
+  /// It returns the point on the ground where the mouse has clicked
+  /**
+	* @param event - The mouse information
+	* @return The Vector2 with the ground point clicked, or null
+	*/
+  getPointOnGround (event) {
+	 // Obteniendo las coordenadas del ratón.
+	 var mouse = this.getMouse (event);
+
+	 // Se lanza un rayo desde la cámara hasta las coordenadas del ratón
+	 this.raycaster.setFromCamera (mouse, scene.getCamera());
+
+	 // Calcula los objetos que son atravesados por el rayo
+	 var surfaces = [this.ground];
+	 var pickedObjects = this.raycaster.intersectObjects (surfaces);
+
+	 // Cuando hay elementos en la intersección se devuelve una array de dichos elementos
+	 if (pickedObjects.length > 0) {
+
+		// Devuelve las coordenadas en x, z
+		// (la coordenada 'y' se presupone 0, pues ha tocado el suelo)
+		return new THREE.Vector2 (pickedObjects[0].point.x, pickedObjects[0].point.z);}
+
+	// Cuando no hay elementos en la intersección, no devuelve coordenadas.
+	else
+		return null;
+  }
+
   /// It adds a new box on the ground
   /**
 	* @param event - Mouse information
@@ -100,22 +131,29 @@ class Ground extends THREE.Object3D {
 		this.box = null;
 		return;
 	 }
+	 if(this.elementos < TheScene.TOPE_DE_ELEMENTOS){
+		var pointOnGround = this.getPointOnGround (event);
+		if (pointOnGround !== null) {
+			// Verifica es estado del programa para para crear el objeto a añadir.
+			if (action === TheScene.NEW_BOX) {
+			  this.box = new THREE.Mesh (
+				new THREE.BoxGeometry (this.boxSize, this.boxSize, this.boxSize),
+				new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)}));
+			  this.box.geometry.applyMatrix (new THREE.Matrix4().makeTranslation (0, this.boxSize/2, 0));
+			  this.box.position.x = pointOnGround.x;
+			  this.box.position.y = 0;
+			  this.box.position.z = pointOnGround.y;
+			  this.box.receiveShadow = true;
+			  this.box.castShadow = true;
+			  this.boxes.add (this.box);
+			  this.updateHeightBoxes(this.boxes.children.length-1);
+			}
+		 }
 
-	 var pointOnGround = this.getPointOnGround (event);
-	 if (pointOnGround !== null) {
-		if (action === TheScene.NEW_BOX) {
-		  this.box = new THREE.Mesh (
-			 new THREE.BoxGeometry (this.boxSize, this.boxSize, this.boxSize),
-			 new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)}));
-		  this.box.geometry.applyMatrix (new THREE.Matrix4().makeTranslation (0, this.boxSize/2, 0));
-		  this.box.position.x = pointOnGround.x;
-		  this.box.position.y = 0;
-		  this.box.position.z = pointOnGround.y;
-		  this.box.receiveShadow = true;
-		  this.box.castShadow = true;
-		  this.boxes.add (this.box);
-		  this.updateHeightBoxes(this.boxes.children.length-1);
-		}
+		 this.elementos ++;
+	 }
+	 else{
+		 setMessage(" Límite de elementos alcanzado ");
 	 }
   }
   /// It moves or rotates a box on the ground
