@@ -22,78 +22,53 @@ applicationMode = TheScene.NO_ACTION;
  */
 function createGUI (withStats) {
   GUIcontrols = new function() {
-	 this.axis = true;
-	 this.lightIntensity = 0.5;
-	 this.rotation = 6;
-	 this.distance = 10;
-	 this.height   = 10;
-/*S2.10*/	 this.grosor = 1;
-	 this.addBox   = function () {
-		setMessage ("Añadir cajas clicando en el suelo");
-		applicationMode = TheScene.ADDING_BOXES;
-	 };
-	 this.moveBox  = function () {
-		setMessage ("Mover y rotar cajas clicando en ellas");
-		applicationMode = TheScene.MOVING_BOXES;
-	 };
-	 this.takeBox  = false;
-/*S2*/ this.foco2 = false;
-/*S2.8 */ this.ambientLight = false;
-/*S2.6 Añadir botón que situe a la grua en una pose concretas*/
-	this.pose = function(){
-/*  Modifical los elementos de la GUI */
-			GUIcontrols.rotation = 2;
-			GUIcontrols.distance = 10;
-			GUIcontrols.height = 1;
-	};
+    this.axis = true;
+    this.lightIntensity = 0.5;
+    this.rotation = 6;
+    this.distance = 10;
+    this.height   = 10;
+    this.addBox   = function () {
+      setMessage ("Añadir cajas clicando en el suelo");
+      applicationMode = TheScene.ADDING_BOXES;
+    };
+    this.moveBox  = function () {
+      setMessage ("Mover y rotar cajas clicando en ellas");
+      applicationMode = TheScene.MOVING_BOXES;
+    };
+    this.takeBox  = false;
   }
 
   var gui = new dat.GUI();
   var axisLights = gui.addFolder ('Axis and Lights');
-	 axisLights.add(GUIcontrols, 'axis').name('Axis on/off :');
-/*S2*/    axisLights.add(GUIcontrols,'foco2').name('Roja iluminado');
-	 axisLights.add(GUIcontrols, 'lightIntensity', 0, 1.0).name('Light intensity :');
-/*S2.8*/ axisLights.add(GUIcontrols,'ambientLight').name('Luz ambiental').listen();
+    axisLights.add(GUIcontrols, 'axis').name('Axis on/off :');
+    axisLights.add(GUIcontrols, 'lightIntensity', 0, 1.0).name('Light intensity :');
 
   var actions = gui.addFolder ('Actions');
-	 var addingBoxes = actions.add(GUIcontrols, 'addBox').name (': Adding boxes :');
-	 var movingBoxes = actions.add (GUIcontrols, 'moveBox').name (': Move and rotate boxes :');
-	 var takingBoxes = actions.add (GUIcontrols, 'takeBox').name ('Take the box below');
-	 var poseGrua = actions.add(GUIcontrols,'pose').name('Reubicar Grua');
+    var addingBoxes = actions.add(GUIcontrols, 'addBox').name (': Adding boxes :');
+    var movingBoxes = actions.add (GUIcontrols, 'moveBox').name (': Move and rotate boxes :');
+    var takingBoxes = actions.add (GUIcontrols, 'takeBox').name ('Take the box below');
+    takingBoxes.onChange (function (value) {
+        if (value) {
+        newHeight = scene.takeBox();
+          if (newHeight > 0) {
+              GUIcontrols.height = newHeight;
+              GUIcontrols.takeBox = true;
+          } else {
+              GUIcontrols.takeBox = false;
+          }
+        } else {
+          scene.dropBox ();
+        }
+    });
 
-	 takingBoxes.onChange (function (value) {
-		  if (value) {
-		  newHeight = scene.takeBox();
-			 if (newHeight > 0) {
-				  GUIcontrols.height = newHeight;
-				  GUIcontrols.takeBox = true;
-			 } else {
-				  GUIcontrols.takeBox = false;
-			 }
-		  } else {
-			 scene.dropBox ();
-		  }
-	 });
   var craneControls = gui.addFolder ('Crane Controls');
-	 craneControls.add (GUIcontrols, 'rotation', 0, 12, 0.001).name('Rotation :').listen();
-	 craneControls.add (GUIcontrols, 'distance', 0, 50, 0.1).name('Distance :').listen();
-	var altura = craneControls.add (GUIcontrols, 'height', 0, 50, 0.1).name('Height :').listen();
-	 // The method  listen()  allows the height attribute to be written, not only read
-	var grosorCuerda = craneControls.add(GUIcontrols,'grosor',0.5,2.0,0.1).name('Grosor cuerda').listen();
-	 altura.onChange(function(value){
-		 if(value >=20 && GUIcontrols.takeBox){
-			 scene.dropBox();
-// FIXMI: ¿Porqué No se actualiza el checkBox de la GUI?
-			 this.takeBox = false;
-			 GUIcontrols.takeBox = false;
-		 }
-	 });
+    craneControls.add (GUIcontrols, 'rotation', 0, 12, 0.001).name('Rotation :');
+    craneControls.add (GUIcontrols, 'distance', 0, 50, 0.1).name('Distance :');
+    craneControls.add (GUIcontrols, 'height', 0, 50, 0.1).name('Height :').listen();
+    // The method  listen()  allows the height attribute to be written, not only read
 
-	 grosorCuerda.onChange(function(value){
-		 this.grosor = value;
-	 });
   if (withStats)
-	 stats = initStats();
+    stats = initStats();
 }
 
 /// It adds statistics information to a previously created Div
@@ -130,27 +105,27 @@ function setMessage (str) {
  */
 function onMouseDown (event) {
   if (event.ctrlKey) {
-	 // The Trackballcontrol only works if Ctrl key is pressed
-	 scene.getCameraControls().enabled = true;
+    // The Trackballcontrol only works if Ctrl key is pressed
+    scene.getCameraControls().enabled = true;
   } else {
-	 scene.getCameraControls().enabled = false;
-	 if (event.button === 0) {   // Left button
-		mouseDown = true;
-		switch (applicationMode) {
-		  case TheScene.ADDING_BOXES :
-			 scene.addBox (event, TheScene.NEW_BOX);
-			 break;
-		  case TheScene.MOVING_BOXES :
-			 scene.moveBox (event, TheScene.SELECT_BOX);
-			 break;
-		  default :
-			 applicationMode = TheScene.NO_ACTION;
-			 break;
-		}
-	 } else {
-		setMessage ("");
-		applicationMode = TheScene.NO_ACTION;
-	 }
+    scene.getCameraControls().enabled = false;
+    if (event.button === 0) {   // Left button
+      mouseDown = true;
+      switch (applicationMode) {
+        case TheScene.ADDING_BOXES :
+          scene.addBox (event, TheScene.NEW_BOX);
+          break;
+        case TheScene.MOVING_BOXES :
+          scene.moveBox (event, TheScene.SELECT_BOX);
+          break;
+        default :
+          applicationMode = TheScene.NO_ACTION;
+          break;
+      }
+    } else {
+      setMessage ("");
+      applicationMode = TheScene.NO_ACTION;
+    }
   }
 }
 
@@ -160,15 +135,15 @@ function onMouseDown (event) {
  */
 function onMouseMove (event) {
   if (mouseDown) {
-	 switch (applicationMode) {
-		case TheScene.ADDING_BOXES :
-		case TheScene.MOVING_BOXES :
-		  scene.moveBox (event, TheScene.MOVE_BOX);
-		  break;
-		default :
-		  applicationMode = TheScene.NO_ACTION;
-		  break;
-	 }
+    switch (applicationMode) {
+      case TheScene.ADDING_BOXES :
+      case TheScene.MOVING_BOXES :
+        scene.moveBox (event, TheScene.MOVE_BOX);
+        break;
+      default :
+        applicationMode = TheScene.NO_ACTION;
+        break;
+    }
   }
 }
 
@@ -178,18 +153,18 @@ function onMouseMove (event) {
  */
 function onMouseUp (event) {
   if (mouseDown) {
-	 switch (applicationMode) {
-		case TheScene.ADDING_BOXES :
-		  scene.addBox (event, TheScene.END_ACTION);
-		  break;
-		case TheScene.MOVING_BOXES :
-		  scene.moveBox (event, TheScene.END_ACTION);
-		  break;
-		default :
-		  applicationMode = TheScene.NO_ACTION;
-		  break;
-	 }
-	 mouseDown = false;
+    switch (applicationMode) {
+      case TheScene.ADDING_BOXES :
+        scene.addBox (event, TheScene.END_ACTION);
+        break;
+      case TheScene.MOVING_BOXES :
+        scene.moveBox (event, TheScene.END_ACTION);
+        break;
+      default :
+        applicationMode = TheScene.NO_ACTION;
+        break;
+    }
+    mouseDown = false;
   }
 }
 
@@ -199,17 +174,17 @@ function onMouseUp (event) {
  */
 function onMouseWheel (event) {
   if (event.ctrlKey) {
-	 // The Trackballcontrol only works if Ctrl key is pressed
-	 scene.getCameraControls().enabled = true;
+    // The Trackballcontrol only works if Ctrl key is pressed
+    scene.getCameraControls().enabled = true;
   } else {
-	 scene.getCameraControls().enabled = false;
-	 if (mouseDown) {
-		switch (applicationMode) {
-		  case TheScene.MOVING_BOXES :
-			 scene.moveBox (event, TheScene.ROTATE_BOX);
-			 break;
-		}
-	 }
+    scene.getCameraControls().enabled = false;
+    if (mouseDown) {
+      switch (applicationMode) {
+        case TheScene.MOVING_BOXES :
+          scene.moveBox (event, TheScene.ROTATE_BOX);
+          break;
+      }
+    }
   }
 }
 

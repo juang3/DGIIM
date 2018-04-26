@@ -10,6 +10,7 @@
  */
 
 class Ground extends THREE.Object3D {
+
   constructor (aWidth, aDeep, aMaterial, aBoxSize) {
     super();
 
@@ -35,6 +36,7 @@ class Ground extends THREE.Object3D {
     this.boxes = new THREE.Object3D();
     this.add (this.boxes);
   }
+
   /// Whether the boxes b1 and b2 intersect or not
   /**
    * @param b1 - A box to test
@@ -47,8 +49,8 @@ class Ground extends THREE.Object3D {
                                    new THREE.Vector2 (b2.position.x, b2.position.z));
     return (vectorBetweenBoxes.length() < this.boxSize);
   }
-  /// It returns the position of the mouse
-  ///    in normalized coordinates ([-1,1],[-1,1])
+
+  /// It returns the position of the mouse in normalized coordinates ([-1,1],[-1,1])
   /**
    * @param event - Mouse information
    * @return A Vector2 with the normalized mouse position
@@ -59,23 +61,36 @@ class Ground extends THREE.Object3D {
     mouse.y = 1 - 2 * (event.clientY / window.innerHeight);
     return mouse;
   }
+
   /// It returns the point on the ground where the mouse has clicked
   /**
    * @param event - The mouse information
    * @return The Vector2 with the ground point clicked, or null
    */
   getPointOnGround (event) {
+    // Obteniendo las coordenadas del ratón.
     var mouse = this.getMouse (event);
+
+    // Se lanza un rayo desde la cámara hasta las coordenadas del ratón
     this.raycaster.setFromCamera (mouse, scene.getCamera());
+
+    // Calcula los objetos que son atravesados por el rayo
     var surfaces = [this.ground];
     var pickedObjects = this.raycaster.intersectObjects (surfaces);
+
+    // Cuando hay elementos en la intersección se devuelve una array de dichos elementos
     if (pickedObjects.length > 0) {
-      return new THREE.Vector2 (pickedObjects[0].point.x, pickedObjects[0].point.z);
-    } else
+
+      // Devuelve las coordenadas en x, z
+      // (la coordenada 'y' se presupone 0, pues ha tocado el suelo)
+      return new THREE.Vector2 (pickedObjects[0].point.x, pickedObjects[0].point.z);}
+
+   // Cuando no hay elementos en la intersección, no devuelve coordenadas.
+   else
       return null;
   }
-  /// It computes the height of the boxes
-  ///   so that some can be stacked on the others
+
+  /// It computes the height of the boxes so that some can be stacked on the others
   /**
    * @param k - From which box must be calculated
    */
@@ -90,6 +105,7 @@ class Ground extends THREE.Object3D {
       }
     }
   }
+
   /// It adds a new box on the ground
   /**
    * @param event - Mouse information
@@ -103,6 +119,7 @@ class Ground extends THREE.Object3D {
 
     var pointOnGround = this.getPointOnGround (event);
     if (pointOnGround !== null) {
+      // Verifica es estado del programa para para crear el objeto a añadir.
       if (action === TheScene.NEW_BOX) {
         this.box = new THREE.Mesh (
           new THREE.BoxGeometry (this.boxSize, this.boxSize, this.boxSize),
@@ -118,6 +135,7 @@ class Ground extends THREE.Object3D {
       }
     }
   }
+
   /// It moves or rotates a box on the ground
   /**
    * @param event - Mouse information
@@ -166,6 +184,7 @@ class Ground extends THREE.Object3D {
         break;
     }
   }
+
   /// The crane can take a box
   /**
    * @param position The position where the crane's hook is
@@ -192,6 +211,7 @@ class Ground extends THREE.Object3D {
     }
     return null;
   }
+
   /// The crane has dropped a box
   /**
    * @param aBox - The dropped box

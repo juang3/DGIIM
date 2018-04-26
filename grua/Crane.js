@@ -23,7 +23,7 @@ class Crane extends THREE.Object3D {
     this.craneWidth  = (parameters.craneWidth === undefined ? 45 : parameters.craneWidth);
     this.material    = (parameters.material === undefined ? new THREE.MeshPhongMaterial ({color: 0xd4af37, specular: 0xfbf804, shininess: 70}) : parameters.material);
 
-    // With these variables, the position of the hook is set
+    // With these variables, the posititon of the hook is set
     this.angle           = 0;
     this.distance        = this.craneWidth / 2;
     this.height          = this.craneHeight / 2;
@@ -58,6 +58,7 @@ class Crane extends THREE.Object3D {
   }
 
   // Private methods
+
   /// It computes the length of the string
   computeStringLength () {
     // stringLenght = base height + crane height - trolley height - hook height - height of the hook to the ground. So,
@@ -70,7 +71,6 @@ class Crane extends THREE.Object3D {
     var base = new THREE.Mesh (
       new THREE.CylinderGeometry (this.craneWidth/10, this.craneWidth/10, this.baseHookHeight, 16, 1),
                                this.material);
-
     base.geometry.applyMatrix (new THREE.Matrix4().makeTranslation (0, this.baseHookHeight/2, 0));
     base.castShadow = true;
     base.autoUpdateMatrix = false;
@@ -103,6 +103,7 @@ class Crane extends THREE.Object3D {
     this.jib.add (this.createTrolleyStringHook());
     return this.jib;
   }
+
 
   /// It creates the trolley, string and hook
   createTrolleyStringHook () {
@@ -245,12 +246,6 @@ class Crane extends THREE.Object3D {
     } else
       return null;
   }
-
- /// * S2.10] Hacer que la cuerda de la grúa sea más estrecha */
-  modificarAnchoCuerda(unEntero){
-     this.string.scale.x= unEntero;
-     this.string.scale.z= unEntero;
- }
 }
 
 // class variables
