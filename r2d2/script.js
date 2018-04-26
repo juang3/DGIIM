@@ -32,6 +32,7 @@ function createGUI (withStats) {
     this.tamanio_droide = TAMANIO_BASE;
     this.ver_esfera = false;
     this.ver_caja = false;
+    this.distancia = 1.5;     // Examen
 
     this.tamanio_campo = TAMANIO_BASE + 0.5 ;
     // Al crear el campo con la opción wireframe:true, puedo visualizarlo.
@@ -68,14 +69,16 @@ function createGUI (withStats) {
 	 axisLights.add(GUIcontrols, 'lightIntensity', 0, 1.0).name('Light intensity :');
 /*S2.8*/ axisLights.add(GUIcontrols,'ambientLight').name('Luz ambiental');
 
-  var actions = gui.addFolder ('Actions');
+//  var actions = gui.addFolder ('Actions');
 //	 var addingBoxes = actions.add(GUIcontrols, 'addBox').name (': Adding boxes :');
 //	 var movingBoxes = actions.add (GUIcontrols, 'moveBox').name (': Move and rotate boxes :');
-	 var poseGrua = actions.add(GUIcontrols,'pose').name('Pose r2d2');
+//	 var poseGrua = actions.add(GUIcontrols,'pose').name('Pose r2d2');
 
 var ver_campo_juego = gui.add(GUIcontrols,'ver_campo').name('Ver campo');
 var tamanio = gui.add (GUIcontrols, 'tamanio_campo', TAMANIO_MIN, TAMANIO_MAX,0.1).name('Campo de juego').listen();
 var suelo = gui.add(GUIcontrols, 'opacidad_del_suelo', 0.0, 1.0, 0.1).name('Opacidad del suelo').listen();
+// Examen
+   var distancia = gui.add(GUIcontrols,'distancia',1.0,3.0,0.2).name('Distancia al eje Y').listen();
 /*   tamanio.onChange(function (value){
       GUIcontrols.tamanio_campo = scene
          .campo_de_juego
@@ -229,13 +232,15 @@ function render() {
   var tres_cuartos_ancho = window.innerWidth*0.75
   var tres_cuartos_alto  = window.innerHeight*0.75
 
-  renderViewport(scene, scene.getCamera_primera_persona(),
-   0,0,
-   tres_cuartos_ancho, tres_cuartos_alto);
+//  renderViewport(scene, scene.getCamera_primera_persona(),
+//   0,0,
+//   tres_cuartos_ancho, tres_cuartos_alto);
 //   window.innerWidth, window.innerHeight);
   renderViewport(scene, scene.getCamera_general(),
-   tres_cuartos_ancho, 0,
-   un_cuarto_ancho, un_cuarto_alto);
+  0, 0,
+  tres_cuartos_ancho, tres_cuartos_alto);
+//   tres_cuartos_ancho, 0,
+//   un_cuarto_ancho, un_cuarto_alto);
 
   renderViewport(scene, scene.r2d2.camera_3p,
    tres_cuartos_ancho, window.innerHeight*0.5,

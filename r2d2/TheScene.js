@@ -123,7 +123,8 @@ class TheScene extends THREE.Scene {
 			vida_total: 100
 		}
 	this.r2d2= new R2D2(parametros);
-	model.add(this.r2d2);
+	this.r2d2.activo = false;
+//	model.add(this.r2d2);
 
 // Creando el campo de juego
 /**/
@@ -137,12 +138,14 @@ class TheScene extends THREE.Scene {
 //	console.log(this.r2d2.embergadura);
 	 this.campo_de_juego = new CampoDeJuego(dimensiones, this.num_meteoros);
 
-	model.add(this.campo_de_juego);
+//	model.add(this.campo_de_juego);
 
 //	console.log(this.campo_de_juego.gestor_de_meteoritos.children.length);
 // Creando el ambiente
-model.add(new Ambiente());
+// model.add(new Ambiente());
 /**/
+	this.esfera = new EXAMEN(1.0, Math.PI/4, 1.0)
+	model.add(this.esfera);
 	 return model;
   }
 
@@ -190,6 +193,8 @@ model.add(new Ambiente());
 
 	// Animate debe utilizarse mientras r2d2 esté activo
 	this.animacion_activa = this.r2d2.activo;
+	this.esfera.update(controls);
+
 	if(this.animacion_activa){
 		this.axis.visible = controls.axis;
 		/*S2 Añadir boton al foco */	 this.foco2.visible = controls.foco2;
