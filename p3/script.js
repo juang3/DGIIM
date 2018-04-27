@@ -54,10 +54,10 @@ function createGUI (withStats) {
 	 axisLights.add(GUIcontrols, 'lightIntensity', 0, 1.0).name('Light intensity :');
 /*S2.8*/ axisLights.add(GUIcontrols,'ambientLight').name('Luz ambiental');
 
-	var actions 		= gui.addFolder ('Actions');
-	var addingOrb 		= actions.add(GUIcontrols, 'addOrb').name (': Añadir globo :');
-	var movingBoxes 	= actions.add(GUIcontrols, 'moveOrb').name (': Mover elementos :');
-	var selectOrb 		= actions.add(GUIcontrols, 'selectOrb').name(': Elegir elemento :');
+	var actions 	= gui.addFolder ('Actions');
+	var addingOrb 	= actions.add(GUIcontrols, 'addOrb').name (': Añadir globo :');
+	var movingOrb 	= actions.add(GUIcontrols, 'moveOrb').name (': Mover elementos :');
+	var selectOrb 	= actions.add(GUIcontrols, 'selectOrb').name(': Elegir elemento :');
 //	 var poseGrua = actions.add(GUIcontrols,'pose').name('Pose r2d2');
 
 var suelo = gui.add(GUIcontrols, 'opacidad_del_suelo', 0.0, 1.0, 0.1).name('Opacidad del suelo').listen();
@@ -115,6 +115,9 @@ function onMouseDown (event) {
 		  case TheScene.MOVING_BOXES :
 			 scene.moveBox (event, TheScene.SELECT_BOX);
 			 break;
+        case TheScene.OBJETIVE_BOX :
+            setMessage('Entrando en onMouseDown');
+         break;
 		  default :
 			 applicationMode = TheScene.NO_ACTION;
 			 break;
@@ -137,6 +140,9 @@ function onMouseMove (event) {
 		case TheScene.MOVING_BOXES :
 		  scene.moveBox (event, TheScene.MOVE_BOX);
 		  break;
+      case TheScene.OBJETIVE_BOX :
+      setMessage('Entrando en onMouseMove');
+         break;
 		default :
 		  applicationMode = TheScene.NO_ACTION;
 		  break;
@@ -157,6 +163,11 @@ function onMouseUp (event) {
 		case TheScene.MOVING_BOXES :
 		  scene.moveBox (event, TheScene.END_ACTION);
 		  break;
+      case TheScene.OBJETIVE_BOX:
+         // Debe seguir transparente.
+         setMessage('Entrando en onMouseUp')
+         scene.selectBox(event, TheScene.OBJETIVE_BOX);
+         break;
 		default :
 		  applicationMode = TheScene.NO_ACTION;
 		  break;
