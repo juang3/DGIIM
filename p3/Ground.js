@@ -164,7 +164,9 @@ class Ground extends THREE.Object3D {
   moveBox (event, action) {
 	 switch (action) {
 		case TheScene.END_ACTION :
-		  if (this.box !== null) {
+		  if (this.box !== null && this.box !== this.objetivo) {
+          // this.box !== this.objetivo es una condición visualmente necesaria
+          // para que el usuario distinga el elemento que ha seleccionado
 			 this.box.material.transparent = false;
 			 this.box = null;
 		  }
@@ -180,20 +182,25 @@ class Ground extends THREE.Object3D {
 			 }
 		  }
 		  break;
-
 		case TheScene.SELECT_BOX :
-		  var mouse = this.getMouse (event);
-		  this.raycaster.setFromCamera (mouse, scene.getCamera());
-		  var pickedObjects = this.raycaster.intersectObjects (this.boxes.children);
-		  if (pickedObjects.length > 0) {
-			 this.box = pickedObjects[0].object;
-			 this.box.material.transparent = true;
-			 this.box.material.opacity = 0.5;
-			 var indexOfBox = this.boxes.children.indexOf (this.box);
-			 this.boxes.remove (this.box);
-			 this.boxes.add (this.box);
-			 this.updateHeightBoxes(indexOfBox);
-		  }
+         // Tomo coordenadas del ratón
+         var mouse = this.getMouse (event);
+         // Lanzo rayo desde la cámara hasta el ratón
+         this.raycaster.setFromCamera (mouse, scene.getCamera());
+
+         // Obtengo los objetos que son atravesados por el rayo.
+         var pickedObjects = this.raycaster.intersectObjects (this.boxes.children);
+
+         // Cuando hay objetos modifico su apariencia.
+         if (pickedObjects.length > 0) {
+           this.box = pickedObjects[0].object;
+           this.box.material.transparent = true;
+           this.box.material.opacity = 0.5;
+           var indexOfBox = this.boxes.children.indexOf (this.box);
+           this.boxes.remove (this.box);
+           this.boxes.add (this.box);
+           this.updateHeightBoxes(indexOfBox);
+         }
 		  break;
 
 		case TheScene.ROTATE_BOX :
@@ -204,6 +211,29 @@ class Ground extends THREE.Object3D {
 		  break;
 	 }
   }
+
+  selectBox(event, action){
+     if(TheScene.OBJETIVE_BOX){
+        var mouse = this.getMouse (event);
+        // Lanzo rayo desde la cámara hasta el ratón
+        this.raycaster.setFromCamera (mouse, scene.getCamera());
+
+        // Obtengo los objetos que son atravesados por el rayo.
+        var pickedObjects = this.raycaster.intersectObjects (this.boxes.children);
+
+        // Cuando hay objetos modifico su apariencia.
+        if (pickedObjects.length > 0) {
+          this.box = pickedObjects[0].object;
+          this.box.material.transparent = true;
+          this.box.material.opacity = 0.5;
+          this.objetivo = this.box;
+         }
+         else{
+            setMessage(action);
+         }
+      }
+   }
+
   /// The crane can take a box
   /**
 	* @param position The position where the crane's hook is

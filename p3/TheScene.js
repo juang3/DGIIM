@@ -97,7 +97,10 @@ class TheScene extends THREE.Scene {
 	 material_superficie.opacity = 0.9;
 
 // Creando el suelo
-	 this.ground = new Ground (300, 300, material_superficie, 4);
+	 this.ground = new Ground (
+		 TheScene.TAMANIO_MAXIMO_DEL_ESCENARIO, // Anchura ejeX
+		 TheScene.TAMANIO_MAXIMO_DEL_ESCENARIO, // Profundidad ejeZ
+		 material_superficie, 4);
 	 model.add (this.ground);
 
 // Creando a R2d2
@@ -137,6 +140,10 @@ class TheScene extends THREE.Scene {
 	*/
   moveBox (event, action) {
 	 this.ground.moveBox (event, action);
+  }
+
+  selectBox(event, action){
+	  this.ground.selectBox (event, action);
   }
 
   /// It sets the r2d2 position according to the GUI
@@ -196,3 +203,4 @@ class TheScene extends THREE.Scene {
 
   // Límites
   TheScene.TOPE_DE_ELEMENTOS = 10;
+  TheScene.TAMANIO_MAXIMO_DEL_ESCENARIO = 300;
