@@ -3,6 +3,7 @@
 
 /// The scene graph
 scene = null;
+target_box = null;
 
 /// The GUI information
 GUIcontrols = null;
@@ -161,11 +162,13 @@ function onMouseUp (event) {
 		  scene.addBox (event, TheScene.END_ACTION);
 		  break;
 		case TheScene.MOVING_BOXES :
-		  scene.moveBox (event, TheScene.END_ACTION);
-		  break;
+         setMessage('Entrando en onMouseUp '+ TheScene.MOVING_BOXES)
+         // Se elimina la caracterización visual 
+		   scene.moveBox (event, TheScene.END_ACTION);
+		   break;
       case TheScene.OBJETIVE_BOX:
          // Debe seguir transparente.
-         setMessage('Entrando en onMouseUp')
+         setMessage('Entrando en onMouseUp ' + TheScene.OBJETIVE_BOX)
          scene.selectBox(event, TheScene.OBJETIVE_BOX);
          break;
 		default :

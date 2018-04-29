@@ -143,7 +143,10 @@ class TheScene extends THREE.Scene {
   }
 
   selectBox(event, action){
-	  this.ground.selectBox (event, action);
+	  this.target_box = this.ground.selectBox (event, action);
+	  this.insecto.desplazarse_a(this.target_box);
+	  
+	  return this.target_box;
   }
 
   /// It sets the r2d2 position according to the GUI
@@ -157,6 +160,8 @@ class TheScene extends THREE.Scene {
 		this.spotLight.intensity = controls.lightIntensity;
 		this.ambientLight.visible = controls.ambientLight;
 		this.ground.material.opacity = controls.opacidad_del_suelo;
+
+		this.insecto.update();
   }
 
   /// It returns the camera
