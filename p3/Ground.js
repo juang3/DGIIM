@@ -145,6 +145,10 @@ class Ground extends THREE.Object3D {
 				this.box.position.z = pointOnGround.y;
 				this.box.receiveShadow = true;
 				this.box.castShadow = true;
+
+				// Marcando al elemento
+				this.box.objetivo = false;
+
 				this.boxes.add (this.box);
 				this.updateHeightBoxes(this.boxes.children.length-1);
 			}
@@ -165,14 +169,21 @@ class Ground extends THREE.Object3D {
 	 switch (action) {
 		case TheScene.END_ACTION :
 			if (this.box !== null){
-				// Si el elemento escogido es el objetivo 
-				if(!this.box.objetivo) {
+				console.log("La caja NO es nula")
+				// Si el elemento escogido es el objetivo
+				if(this.box.objetivo) {
+					console.log("La caja SI es el objetivo")
 					// this.box.objetivo == true es una condición visualmente necesaria
 					// para que el usuario distinga el elemento que ha seleccionado
-					this.box.material.transparent = false;
-					this.box = null;}
+					scene.insecto.desplazarse_a(this.box);
+// XXX No sé el motivo por el cual la caja se opaca
+// XXX DEBO MIRAR desplazarse_a para averiguar lo que ocurre
+//					this.box.material.transparent = true;
+				}
 				else{
-					scene.insecto.desplazarse_a(this.box);}
+					console.log("La caja No es el objetivo")
+					this.box.material.transparent = false;
+				}
 			}
 			break;
 
@@ -187,26 +198,8 @@ class Ground extends THREE.Object3D {
 			}
 			break;
 		case TheScene.SELECT_BOX :
-		console.log("entrando a selectBox")
-			// Tomo coordenadas del ratón
-			var mouse = this.getMouse (event);
-			// Lanzo rayo desde la cámara hasta el ratón
-			this.raycaster.setFromCamera (mouse, scene.getCamera());
+			var box = this.selectBox(event, TheScene.SELECT_BOX);
 
-			// Obtengo los objetos que son atravesados por el rayo.
-			var pickedObjects = this.raycaster.intersectObjects (this.boxes.children);
-
-			// Cuando hay objetos modifico su apariencia.
-			if (pickedObjects.length > 0) {
-				this.box = pickedObjects[0].object;
-				this.box.material.transparent = true;
-				this.box.material.opacity = 0.5;
-
-				var indexOfBox = this.boxes.children.indexOf (this.box);
-				this.boxes.remove (this.box);
-				this.boxes.add (this.box);
-				this.updateHeightBoxes(indexOfBox);
-			}
 			break;
 
 		case TheScene.ROTATE_BOX :
@@ -230,23 +223,25 @@ class Ground extends THREE.Object3D {
 			// Cuando hay objetos modifico su apariencia.
 			if (pickedObjects.length > 0) {
 				// Al objeto anterior lo vuelvo opaco.
-				if( this.box != null ){
-					this.box.material.transparent = false;
-					this.box.objetivo = false;}
+//				console.log("Seleccionando objtivo");
+//				console.log(this.box)
+//			if( this.box !== null){ this.box.objetivo = false;}
 
 				// Actualizo el objetivo.
 				this.box = pickedObjects[0].object;
+//				console.log(this.box)
+				if( this.box !== target_box){	this.box.objetivo = false;}
 
 				// Al objetivo actual lo vuelvo transparente
 				this.box.material.transparent = true;
 				this.box.material.opacity = 0.5;
 
 				// Distinguiendo el elemento.
-				this.box.objetivo = true;
-
+				// this.box.material.transparent = true;
 			}
 			else{
 				setMessage(action);
+				this.box = null;
 			}
 		}
 		return this.box;
