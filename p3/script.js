@@ -162,14 +162,16 @@ function onMouseUp (event) {
 		  scene.addBox (event, TheScene.END_ACTION);
 		  break;
 		case TheScene.MOVING_BOXES :
-         setMessage('Entrando en onMouseUp '+ TheScene.MOVING_BOXES)
-         // Se elimina la caracterización visual 
+         setMessage('Entrando en onMouseUp (MOVING_BOXES)'+ TheScene.MOVING_BOXES)
+         // Se elimina la caracterización visual
 		   scene.moveBox (event, TheScene.END_ACTION);
 		   break;
       case TheScene.OBJETIVE_BOX:
          // Debe seguir transparente.
          setMessage('Entrando en onMouseUp ' + TheScene.OBJETIVE_BOX)
-         scene.selectBox(event, TheScene.OBJETIVE_BOX);
+            var box = scene.selectBox(event, TheScene.OBJETIVE_BOX);
+            // En este momento debe ser llamado el insecto.
+            scene.insecto.desplazarse_a(box);
          break;
 		default :
 		  applicationMode = TheScene.NO_ACTION;
