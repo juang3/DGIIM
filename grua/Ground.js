@@ -130,6 +130,9 @@ class Ground extends THREE.Object3D {
         this.box.position.z = pointOnGround.y;
         this.box.receiveShadow = true;
         this.box.castShadow = true;
+        // Marcando al elemento
+        this.box.objetivo = false;
+        
         this.boxes.add (this.box);
         this.updateHeightBoxes(this.boxes.children.length-1);
       }

@@ -143,9 +143,7 @@ class TheScene extends THREE.Scene {
   }
 
   selectBox(event, action){
-	  this.target_box = this.ground.selectBox (event, action);
-	  this.insecto.desplazarse_a(this.target_box);
-	  
+		this.target_box = this.ground.selectBox (event, action);
 	  return this.target_box;
   }
 
