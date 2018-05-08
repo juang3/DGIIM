@@ -36,22 +36,33 @@ class Libelula extends THREE.Object3D {
 		this.tolerancia = 0;
 
 	 // Creando el modelo
-	 this.create_libelula(longitud_base);
+    this.escalado = 0.1
+	 this.create_libelula(longitud_base, this.escalado);
+
 	}
 
-	create_libelula(longitud_base){
+	create_libelula(longitud_base, escalado){
 		// Creación de las distinpas partes de linsecto
 		var abdomen = new THREE.BoxGeometry(longitud_base/2, longitud_base/2, longitud_base);
 		var material = new THREE.MeshPhongMaterial({color:0xff0000});
 		var cuerpo = new THREE.Mesh(abdomen, material);
 
+      var frontal = new THREE.SphereGeometry(longitud_base/4, 8, 8);
+      this.cabeza = new THREE.Mesh(frontal, material);
+      this.cabeza.position.y += longitud_base/3;
+      this.cabeza.position.z += longitud_base/2;
+
 		// Creación de la raíz del insecto
 		this.libelula = new THREE.Object3D();
-		this.libelula.scale.set(0.1, 0.1, 0.1);
+		this.libelula.scale.set(escalado, escalado, escalado);
 
 		// Añadiendo los elementos del insecto
 		this.libelula.add(cuerpo);
+      this.libelula.add(this.cabeza)
 		this.velocidad = 0.0;
+      this.createCamaraOrbital(0, this.tamanio, 4*this.tamanio);
+      this.createCamaraSubjetiva();
+//      this.frontal.position.set(abdomen.position.x, abdomen.position.y, abdomen.position.z);
 		// Añadiendo el la jerarquía a la instancia.
 		this.add(this.libelula);
 
@@ -61,24 +72,24 @@ class Libelula extends THREE.Object3D {
 		// [elemento != null] Evita fallo al marcar en zona vacía
 
 		if(elemento !== null && elemento.material.transparent){
-         // Si el objetivo anterior es distinto al nuevo objetivo.
-         // Éste debe ser modificado para evitar tener más de un elemento como objetivo.
-         if(target_box !== null && target_box !== elemento) {
-            target_box.objetivo = false;
-            target_box.material.transparent = false;
-         }
+			// Si el objetivo anterior es distinto al nuevo objetivo.
+			// Éste debe ser modificado para evitar tener más de un elemento como objetivo.
+			if(target_box !== null && target_box !== elemento) {
+				target_box.objetivo = false;
+				target_box.material.transparent = false;
+			}
 
-         // Se indica que el nuevo elemento es el objetivo
-         elemento.objetivo = true;
+			// Se indica que el nuevo elemento es el objetivo
+			elemento.objetivo = true;
 
-         // Se actualiza el objetivo anterior.
-         target_box = elemento;
+			// Se actualiza el objetivo anterior.
+			target_box = elemento;
 
 			// Criterio de cercania entre la libélula y el elemento objetivo
 			this.tolerancia = elemento.scale.x;
 
-         // Aleatorio sutua el objetivo cerca del elemento escogido para
-         // provocar el efecto de posicionamiento aleatorio.
+			// Aleatorio sutua el objetivo cerca del elemento escogido para
+			// provocar el efecto de posicionamiento aleatorio.
 			var aleatoria = elemento.scale.y*4;
 			this.coordenadas_objetivo.set(
 				elemento.position.x + Math.random(aleatoria),
@@ -98,8 +109,8 @@ class Libelula extends THREE.Object3D {
 			this.tiempo_del_frame_anterior = Date.now();
 			this.contador_de_frame = 0;
 
-         // Iniciar el camino.
-         this.iniciar_camino = true;
+			// Iniciar el camino.
+			this.iniciar_camino = true;
 		}
 
 	}
@@ -107,6 +118,7 @@ class Libelula extends THREE.Object3D {
 
 	//
 	update(){
+      this.giro_orbital(0.020);
 		// Verificando que se ha llegado.
 		//console.log(this.libelula.position);
 		//console.log(this.contador_de_frame);
@@ -223,11 +235,48 @@ class Libelula extends THREE.Object3D {
 		}
 	}
 
-	limpiar_array(padre){
-//		console.log(padre);
-		padre.splice(0, padre.length);
-//		console.log(padre);
+	limpiar_array(padre){  padre.splice(0, padre.length);}
+
+	// Creando cámara local (Gira al rededor del insecto)
+	createCamaraOrbital(x, y, z){
+		this.camara_local = new THREE.PerspectiveCamera(
+		 45, window.innerWidth / window.innerHeight, 0.1, 500);
+
+       // Posicionamiento de la cámara
+       this.camara_local.position.set(x, y, z);
+//       this.camara_local.lookAt(this.libelula.position);
+
+      // Orbitar al rededor de la libelula
+      this.camara_orbital = new THREE.Object3D();
+      this.camara_orbital.add(this.camara_local);
+//      this.camara_orbital.rotation.y = Math.PI;
+
+		// Añadiendo la cámara a la instancia
+		this.libelula.add(this.camara_orbital);
+
+	  return this.camara_orbital;
 	}
+
+	giro_orbital(angulo){
+//      this.camara_orbital.lookAt(this.libelula.position)
+		this.camara_orbital.rotation.y += angulo
+	}
+
+	get_camara_orbital(){return this.camara_local;}
+
+   createCamaraSubjetiva(){
+
+		this.camara_subjetiva = new THREE.PerspectiveCamera(
+		 10, window.innerWidth / window.innerHeight, 1, 14.14*TheScene.TAMANIO_MAXIMO_DEL_ESCENARIO);
+
+      // Posicionamiento de la cámara
+      this.camara_subjetiva.rotation.y = Math.PI;
+
+      this.cabeza.add(this.camara_subjetiva);
+      return this.camara_subjetiva;
+   }
+
+   get_camara_subjetiva(){ return this.camara_subjetiva;}
 }
 
 Libelula.LINEAL = 1;
