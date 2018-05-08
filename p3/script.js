@@ -116,9 +116,9 @@ function onMouseDown (event) {
 		  case TheScene.MOVING_BOXES :
 			 scene.moveBox (event, TheScene.SELECT_BOX);
 			 break;
-        case TheScene.OBJETIVE_BOX :
-            setMessage('Entrando en onMouseDown');
-         break;
+		  case TheScene.OBJETIVE_BOX :
+				setMessage('Entrando en onMouseDown');
+			break;
 		  default :
 			 applicationMode = TheScene.NO_ACTION;
 			 break;
@@ -141,9 +141,9 @@ function onMouseMove (event) {
 		case TheScene.MOVING_BOXES :
 		  scene.moveBox (event, TheScene.MOVE_BOX);
 		  break;
-      case TheScene.OBJETIVE_BOX :
-      setMessage('Entrando en onMouseMove');
-         break;
+		case TheScene.OBJETIVE_BOX :
+		setMessage('Entrando en onMouseMove');
+			break;
 		default :
 		  applicationMode = TheScene.NO_ACTION;
 		  break;
@@ -162,17 +162,17 @@ function onMouseUp (event) {
 		  scene.addBox (event, TheScene.END_ACTION);
 		  break;
 		case TheScene.MOVING_BOXES :
-         setMessage('Entrando en onMouseUp (MOVING_BOXES)'+ TheScene.MOVING_BOXES)
-         // Se elimina la caracterización visual
-		   scene.moveBox (event, TheScene.END_ACTION);
-		   break;
-      case TheScene.OBJETIVE_BOX:
-         // Debe seguir transparente.
-         setMessage('Entrando en onMouseUp ' + TheScene.OBJETIVE_BOX)
-            var box = scene.selectBox(event, TheScene.OBJETIVE_BOX);
-            // En este momento debe ser llamado el insecto.
-            scene.insecto.desplazarse_a(box);
-         break;
+			setMessage('Entrando en onMouseUp (MOVING_BOXES)'+ TheScene.MOVING_BOXES)
+			// Se elimina la caracterización visual
+			scene.moveBox (event, TheScene.END_ACTION);
+			break;
+		case TheScene.OBJETIVE_BOX:
+			// Debe seguir transparente.
+			setMessage('Entrando en onMouseUp ' + TheScene.OBJETIVE_BOX)
+				var box = scene.selectBox(event, TheScene.OBJETIVE_BOX);
+				// En este momento debe ser llamado el insecto.
+				scene.insecto.desplazarse_a(box);
+			break;
 		default :
 		  applicationMode = TheScene.NO_ACTION;
 		  break;
@@ -202,6 +202,23 @@ function onMouseUp (event) {
  }
 
 // IDEA Movimiento por teclas.
+function onKeyDown(event){
+	// Muestra el valor de la tecla pulsada
+	//		https://www.w3.org/2002/09/tests/keys.html
+	var x = event.which || event.keyCode;
+	switch (x) {
+		case 76:		// La letra 'l' de local
+			this.camera = scene.insecto.get_camara_orbital();
+			console.log( scene.insecto.get_camara_orbital());
+			break;
+		case 71:		// La letra 'g' de geeral
+			this.camera = scene.getCameraGeneral();
+			console.log(scene.getCameraGeneral())
+		default:
+			break;
+	}
+	console.log(x)
+}
 
 /// It processes the window size changes
 function onWindowResize () {
@@ -249,6 +266,16 @@ function render() {
 	  *   0.50 = 2/4
 	  *   0.75 = 3/4
 	  */
+
+   renderViewport(scene, scene.insecto.get_camara_subjetiva(),
+   0, tres_cuartos_alto,
+   un_cuarto_ancho, un_cuarto_alto
+   )
+
+	renderViewport(scene, scene.insecto.camara_local,
+	tres_cuartos_ancho, tres_cuartos_alto,
+	un_cuarto_ancho, un_cuarto_alto
+	)
 }
 
 /* 	IDEA: Creando una función que permite actualizar todoas las camaras
@@ -284,6 +311,9 @@ $(function () {
   window.addEventListener ("mousemove", onMouseMove, true);
   window.addEventListener ("mousedown", onMouseDown, true);
   window.addEventListener ("mouseup", onMouseUp, true);
+
+  // Escucha si debe cambiar de camara.
+  window.addEventListener ("keydown", onKeyDown, true);
   window.addEventListener ("mousewheel", onMouseWheel, true);   // For Chrome an others
   window.addEventListener ("DOMMouseScroll", onMouseWheel, true); // For Firefox
 
