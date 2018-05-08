@@ -137,7 +137,8 @@ class Ground extends THREE.Object3D {
 			// Verifica es estado del programa para para crear el objeto a añadir.
 			if (action === TheScene.NEW_BOX) {
 				this.box = new THREE.Mesh (
-				new THREE.BoxGeometry (this.boxSize, this.boxSize, this.boxSize),
+//				new THREE.BoxGeometry (this.boxSize, this.boxSize, this.boxSize),
+				new THREE.SphereGeometry (this.boxSize/2, 10, 10),
 				new THREE.MeshPhongMaterial ({color: Math.floor (Math.random()*16777215)}));
 				this.box.geometry.applyMatrix (new THREE.Matrix4().makeTranslation (0, this.boxSize/2, 0));
 				this.box.position.x = pointOnGround.x;
