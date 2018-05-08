@@ -63,7 +63,7 @@ function createGUI (withStats) {
 
 var suelo = gui.add(GUIcontrols, 'opacidad_del_suelo', 0.0, 1.0, 0.1).name('Opacidad del suelo').listen();
 
-  var insecto_controls = gui.addFolder ('Libelula Controls');
+  var insecto_controls = gui.addFolder ('insecto Controls');
 
   if (withStats)
 	 stats = initStats();
@@ -205,19 +205,9 @@ function onMouseUp (event) {
 function onKeyDown(event){
 	// Muestra el valor de la tecla pulsada
 	//		https://www.w3.org/2002/09/tests/keys.html
-	var x = event.which || event.keyCode;
-	switch (x) {
-		case 76:		// La letra 'l' de local
-			this.camera = scene.insecto.get_camara_orbital();
-			console.log( scene.insecto.get_camara_orbital());
-			break;
-		case 71:		// La letra 'g' de geeral
-			this.camera = scene.getCameraGeneral();
-			console.log(scene.getCameraGeneral())
-		default:
-			break;
-	}
-	console.log(x)
+	var tecla = event.which || event.keyCode;
+   scene.setCamera(tecla);
+	console.log(tecla)
 }
 
 /// It processes the window size changes
@@ -301,10 +291,10 @@ function renderViewport(escena, camara,
 	 renderer.render(escena, camara);
 }
 /// The main function
+// add the output of the renderer to the html element
 $(function () {
-  // create a render and set the size
-  renderer = createRenderer();
-  // add the output of the renderer to the html element
+   // create a render and set the size
+   renderer = createRenderer();
   $("#WebGL-output").append(renderer.domElement);
   // liseners
   window.addEventListener ("resize", onWindowResize);

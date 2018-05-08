@@ -46,7 +46,7 @@ class TheScene extends THREE.Scene {
 	 this.trackballControlsGeneral=this.createTrackballControls(this.cameraGeneral, look, renderer);
 	 this.add(this.cameraGeneral);
 
-	 this.camera = this.cameraGeneral;
+	 this.camera_actual = this.cameraGeneral;
 	}
 
 	createTrackballControls(camera, objetivo, renderer){
@@ -111,7 +111,7 @@ class TheScene extends THREE.Scene {
 			material: new THREE.MeshPhongMaterial({map: loader.load("imgs/blanco_punteado.png")}),
 			vida_total: 100
 		}
-	this.insecto = new Libelula(3.0);
+	this.insecto = new Insecto(3.0);
 
 	model.add(this.insecto);
 
@@ -169,7 +169,27 @@ class TheScene extends THREE.Scene {
 	/**
 	* @return The camera
 	*/
-	getCamera() {return this.camera; }
+	getCamera() {return this.camera_actual; }
+
+	setCamera(tecla){
+		switch (tecla) {
+			case 79:		// La letra 'o' de cámara orbital
+				this.camera_actual = scene.insecto.get_camara_orbital();
+//				console.log( scene.insecto.get_camara_orbital());
+				break;
+			case 71:		// La letra 'g' de cámara general
+				this.camera_actual = scene.getCameraGeneral();
+//				console.log(scene.getCameraGeneral());
+				break;
+
+			case 76:		// La letra 'l' de cámara local
+				this.camera_actual = scene.insecto.get_camara_subjetiva();
+				break;
+			default:
+			break;
+		}
+	}
+
 	getCameraGeneral(){ return this.cameraGeneral;}
 	/// It returns the camera controls
 	/**
