@@ -3,7 +3,7 @@
 
 /// The scene graph
 scene = null;
-target_box = null;
+target_box = new THREE.Mesh();
 
 /// The GUI information
 GUIcontrols = null;
@@ -104,9 +104,9 @@ function setMessage (str) {
 function onMouseDown (event) {
   if (event.ctrlKey) {
 	 // The Trackballcontrol only works if Ctrl key is pressed
-	 scene.getCameraControls().enabled = true;
+	 scene.get_controles_de_camara().enabled = true;
   } else {
-	 scene.getCameraControls().enabled = false;
+	 scene.get_controles_de_camara().enabled = false;
 	 if (event.button === 0) {   // Left button
 		mouseDown = true;
 		switch (applicationMode) {
@@ -188,9 +188,9 @@ function onMouseUp (event) {
  function onMouseWheel (event) {
 	if (event.ctrlKey) {
 	  // The Trackballcontrol only works if Ctrl key is pressed
-	  scene.getCameraControls().enabled = true;
+	  scene.get_controles_de_camara().enabled = true;
 	} else {
-	  scene.getCameraControls().enabled = false;
+	  scene.get_controles_de_camara().enabled = false;
 	  if (mouseDown) {
 		 switch (applicationMode) {
 			case TheScene.MOVING_BOXES :
@@ -236,7 +236,7 @@ function render() {
   requestAnimationFrame(render);
 
   stats.update();
-  scene.getCameraControls().update ();
+  scene.get_controles_de_camara().update ();
   scene.animate(GUIcontrols);
 
   var un_cuarto_ancho  = window.innerWidth*0.25
@@ -248,7 +248,7 @@ function render() {
 //   0,0,
 //   tres_cuartos_ancho, tres_cuartos_alto);
 //   window.innerWidth, window.innerHeight);
-  renderViewport(scene, scene.getCamera(),
+  renderViewport(scene, scene.get_camara_principal(),
   0, 0,
   window.innerWidth, window.innerHeight);
 	 /* NOTA:
@@ -257,12 +257,12 @@ function render() {
 	  *   0.75 = 3/4
 	  */
 
-   renderViewport(scene, scene.insecto.get_camara_subjetiva(),
+   renderViewport(scene, scene.get_camara_subjetiva(),
    0, tres_cuartos_alto,
    un_cuarto_ancho, un_cuarto_alto
    )
 
-	renderViewport(scene, scene.insecto.camara_local,
+	renderViewport(scene, scene.get_camara_orbital(),
 	tres_cuartos_ancho, tres_cuartos_alto,
 	un_cuarto_ancho, un_cuarto_alto
 	)
