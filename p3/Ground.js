@@ -69,7 +69,7 @@ class Ground extends THREE.Object3D {
 	*/
 	getPointOnGround (event) {
 	 var mouse = this.getMouse (event);
-	 this.raycaster.setFromCamera (mouse, scene.getCamera());
+	 this.raycaster.setFromCamera (mouse, scene.get_camara_principal());
 	 var surfaces = [this.ground];
 	 var pickedObjects = this.raycaster.intersectObjects (surfaces);
 	 if (pickedObjects.length > 0) {
@@ -103,7 +103,7 @@ class Ground extends THREE.Object3D {
 	 var mouse = this.getMouse (event);
 
 	 // Se lanza un rayo desde la cámara hasta las coordenadas del ratón
-	 this.raycaster.setFromCamera (mouse, scene.getCamera());
+	 this.raycaster.setFromCamera (mouse, scene.get_camara_principal());
 
 	 // Calcula los objetos que son atravesados por el rayo
 	 var surfaces = [this.ground];
@@ -170,21 +170,13 @@ class Ground extends THREE.Object3D {
 	 switch (action) {
 		case TheScene.END_ACTION :
 			if (this.box !== null){
-				console.log("La caja NO es nula")
 				// Si el elemento escogido es el objetivo
 				if(this.box.objetivo) {
-					console.log("La caja SI es el objetivo")
 					// this.box.objetivo == true es una condición visualmente necesaria
 					// para que el usuario distinga el elemento que ha seleccionado
 					scene.insecto.desplazarse_a(this.box);
-// XXX No sé el motivo por el cual la caja se opaca
-// XXX DEBO MIRAR desplazarse_a para averiguar lo que ocurre
-//					this.box.material.transparent = true;
 				}
-				else{
-					console.log("La caja No es el objetivo")
-					this.box.material.transparent = false;
-				}
+				else{ this.box.material.transparent = false;}
 			}
 			break;
 
@@ -216,7 +208,7 @@ class Ground extends THREE.Object3D {
 	if(TheScene.OBJETIVE_BOX){
 			var mouse = this.getMouse (event);
 			// Lanzo rayo desde la cámara hasta el ratón
-			this.raycaster.setFromCamera (mouse, scene.getCamera());
+			this.raycaster.setFromCamera (mouse, scene.get_camara_principal());
 
 			// Obtengo los objetos que son atravesados por el rayo.
 			var pickedObjects = this.raycaster.intersectObjects (this.boxes.children);
