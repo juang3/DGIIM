@@ -10,15 +10,15 @@ class TheScene extends THREE.Scene {
 	 // Attributes
 	 this.ambientLight = null;
 	 this.spotLight = null;
-	 this.camera = null;
-	 this.trackballControlsGeneral = null;
+	 this.camara = null;
+	 this.controles_actuales = null;
 	 this.ground = null;
 	 this.insecto = null;
 	 this.campo_de_juego = null;
 
 	 this.createLights ();
 /*S2 añadir foco */ this.createASpotLight();
-	 this.createcameraGeneral (renderer);
+	 this.create_camara_general (renderer);
 	 this.axis = new THREE.AxisHelper (50);
 	 this.add (this.axis);
 
@@ -34,29 +34,37 @@ class TheScene extends THREE.Scene {
 	* @param renderer - The renderer associated with the camera
 	*/
 	// Visión esférica
-	createcameraGeneral (renderer) {
-	 this.cameraGeneral = new THREE.PerspectiveCamera(
+	create_camara_general (renderer) {
+	 this.camaraGeneral = new THREE.PerspectiveCamera(
 		45, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-	 this.cameraGeneral.position.set (60, 30, 60);
-	 var look = new THREE.Vector3 (0,0,0);      // FIXMI: ¿A qué hacen referencia?
-	 this.cameraGeneral.lookAt(look);          // Actualización de la matriz de proyección??
+	 this.camaraGeneral.position.set (60, 30, 60);
+	 this.camaraGeneral.lookAt(TheScene.ORIGEN);// Actualización de la matriz de proyección??
 
+	 // Inicialmente el rederizador utiliza la cámara de visión general.
+	 this.camara_actual = this.camaraGeneral;
 
-	 this.trackballControlsGeneral=this.createTrackballControls(this.cameraGeneral, look, renderer);
-	 this.add(this.cameraGeneral);
+	 //this.controles_generales = this.create_controles_de_camara(this.camaraGeneral, TheScene.ORIGEN, renderer);
+	 //this.controles_actuales = this.controles_generales;
 
-	 this.camera_actual = this.cameraGeneral;
+	 // Se crean los controles de cámara para la visión general.
+	 this.create_controles_de_camara(this.camara_actual, TheScene.ORIGEN, renderer);
+
+	 // A la escenase añade la visión general.
+	 this.add(this.camaraGeneral);
+
 	}
 
-	createTrackballControls(camera, objetivo, renderer){
-		var trackballControls = new THREE.TrackballControls (camera, renderer);
-		trackballControls.rotateSpeed = 5; // Sensibilidad
-		trackballControls.zoomSpeed = -2;
-		trackballControls.panSpeed = 0.5;
-		trackballControls.target = objetivo;
-		return trackballControls;
- }
+	create_controles_de_camara(camera, objetivo, renderer){
+  	 var trackballControls = new THREE.TrackballControls (camera, renderer);
+  	 trackballControls.rotateSpeed = 5; // Sensibilidad
+  	 trackballControls.zoomSpeed = -1;
+  	 trackballControls.panSpeed = 0.5;
+  	 trackballControls.target = objetivo;
+
+	 this.controles_actuales = trackballControls;
+  	 return trackballControls;
+   }
 
 	/// It creates lights and adds them to the graph
 	createLights () {
@@ -72,7 +80,7 @@ class TheScene extends THREE.Scene {
 	 // the shadow resolution
 	 this.spotLight.shadow.mapSize.width=2048				// Resolución de la sombra
 	 this.spotLight.shadow.mapSize.height=2048;			// en anchura y altura
-	 this.add (this.spotLight);
+	 this.add (this.spotLight);								// Añadiendo foco a la escena
 	}
 
 /* S2 Añadir otra luz */
@@ -91,7 +99,7 @@ class TheScene extends THREE.Scene {
 
 // Creando los objetos del escenario
 	createModel () {
-	 var model = new THREE.Object3D()
+	 var model = new THREE.Object3D();
 	 var loader = new THREE.TextureLoader();
 	 var textura = loader.load ("imgs/wood.jpg");
 	 var material_superficie = new THREE.MeshPhongMaterial({map: textura});
@@ -169,46 +177,58 @@ class TheScene extends THREE.Scene {
 	/**
 	* @return The camera
 	*/
-	getCamera() {return this.camera_actual; }
+	get_camara_principal(){	return this.camara_actual; }
+	get_camara_general(){	return this.camaraGeneral;}
+	get_camara_orbital(){	return this.insecto.get_camara_orbital();}
+	get_camara_subjetiva(){	return this.insecto.get_camara_subjetiva();}
 
 	setCamera(tecla){
+		var objetivo;
 		switch (tecla) {
 			case 79:		// La letra 'o' de cámara orbital
-				this.camera_actual = scene.insecto.get_camara_orbital();
-//				console.log( scene.insecto.get_camara_orbital());
+				this.camara_actual = this.get_camara_orbital();
+				this.controles_actuales.target = this.insecto.position;
 				break;
 			case 71:		// La letra 'g' de cámara general
-				this.camera_actual = scene.getCameraGeneral();
-//				console.log(scene.getCameraGeneral());
+				this.camara_actual = this.get_camara_general();
+				this.controles_actuales.target = TheScene.ORIGEN;
 				break;
 
 			case 76:		// La letra 'l' de cámara local
-				this.camera_actual = scene.insecto.get_camara_subjetiva();
+				this.camara_actual = this.get_camara_subjetiva();
+				// No hay objetivo fijo al cual mirar de forma indefinida
+				this.controles_actuales.target = this.get_camara_subjetiva().direccion_destino;
+				this.controles_actuales.target = target_box.position;
 				break;
 			default:
 			break;
 		}
+		this.controles_actuales.object = this.camara_actual;
+
 	}
 
-	getCameraGeneral(){ return this.cameraGeneral;}
 	/// It returns the camera controls
 	/**
 	* @return The camera controls
 	*/
-	getCameraControls () {return this.trackballControlsGeneral;}
+	get_controles_de_camara(){	return this.controles_actuales;}
+//	get_controles_generales(){	return this.controles_generales;}
+//	get_controles_orbitales(){	return this.controles_orbitales;}
+//	get_controles_subjetivos(){return this.controles_subjetivos;}
 
 	/// It updates the aspect ratio of the camera
 	/**
 	* @param anAspectRatio - The new aspect ratio for the camera
 	*/
 	setCameraAspect (anAspectRatio) {
-	 this.camera.aspect = anAspectRatio;
-	 this.camera.updateProjectionMatrix();
+	 this.camara_actual.aspect = anAspectRatio;
+	 this.camara_actual.updateProjectionMatrix();
 	}
 
 }
 
 	// class variables
+	TheScene.ORIGEN = new THREE.Vector3 (0,0,0);
 
 	// Application modes
 	TheScene.NO_ACTION = 0;
