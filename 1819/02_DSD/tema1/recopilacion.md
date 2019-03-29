@@ -143,8 +143,7 @@ November 2013.
 2. Shen, Guicheng, and Bingwu Liu. "The visions,
 technologies, applications and security issues of
 Internet of Things." E-Business and E-Government
-(ICEE), 2011 International Conference on. IEEE,
-2011.
+(ICEE), 2011 International Conference on. IEEE, 2011.
 
 3. Dey, Sandipan, Ajith Abraham, and Sugata Sanyal.
 "An LSB Data Hiding Technique Using Prime
