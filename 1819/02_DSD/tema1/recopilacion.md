@@ -15,11 +15,12 @@ Atzori (et al. 2010) describe la loT como una tecnología con capacidad para int
 
 Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
 
-La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales
+La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales.
+Por ello la sección 2 está oriendata a dos de las tecnologías que utiliza la loT, la sección 3 a las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 4 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. NE la sección 5 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de privacidad. 
 
 
-## Tecnologías de comunicación que usan internet para intercambiar información.
-### Wireless Sensor NetWork (WSN), red de sensores inalámbricos.
+## 2. Tecnologías de comunicación que usan internet para intercambiar información.
+### 2.1 Wireless Sensor NetWork (WSN), red de sensores inalámbricos.
 Esta tecnología está compuesta por nodos donde cada nodo tiene:
 * Sensor, para percibir algún aspecto medible del entorno.
 * Microcontrolador, para realizar las tareas programadas.
@@ -29,7 +30,7 @@ Esta tecnología está compuesta por nodos donde cada nodo tiene:
 Una red WSN está compuesta de nodos independientes donde la comunicación se realiza en unas frecuencias y ancho de banda limitado,
 la limitación del rango en cada nodo produce un relé de información multihop entre la fuente y el destino, es decir, la información pasa de un nodo a otro cercano hasta llegar al nodo de destino.
 
-### Radio Frequency Identification (RFID), identificación por radiofrecuencia.
+### 2.2 Radio Frequency Identification (RFID), identificación por radiofrecuencia.
 Esta tecnología está utiliza los transponedores como medio de almacenamiento y recuperación de datos. 
 Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador, memoria para almacenar su identificador universal EPC (código de producto electrónico), es usada para transmitir la identidad de un dispositivo mediante ondas de radio, sin la necesidad de contacto visual entre los dispositivos.
  * Las __etiquetas activas__ llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
@@ -37,8 +38,8 @@ Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador
  * El __lector__ funciona como detector de etiquetas por su interacción con los EPC
  
  
-## Problemas de seguridad
-### Wireless Sensor NetWork
+## 3. Problemas de seguridad
+### 3.1 Wireless Sensor NetWork
 Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas.
 
 
@@ -65,7 +66,7 @@ Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas
  * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
 
 
-### Radio Frequency Identification
+### 3.2 Radio Frequency Identification
 En lot se utiliza para el intercambio automatizado de información sin participación manual.
 Pero son propensas a ataques de seguridad [25] [35]
 
@@ -84,7 +85,7 @@ Se utiliza la respuesta de la etiqueta ante un lector manipulado.
 La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta. 
 
 
-## Privacidad para el individuo
+## 4. Privacidad para el individuo
 Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
 1. El acto de recopilar datos personales.
 2. El control del usuario de los datos recopilados.
@@ -112,22 +113,23 @@ En la lotT hay tres partes interesadas:
 La loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, a cualquier nivel incluso repercutiendo en el desarrollo de políticas.
 
 
+## Salud basados en la loT.
+#### Aspecto positivo
+Los avances de la ingeniería con la biología han permitido la aparición de dispositivos portátiles para monitorizar la salud  pudiendo transmitir y compartir la información del sensor a través de internet [28], [30], [31], dando la oportudidas a los profesionales a obtener patrones para una mejor atención al paciente. 
 
-
---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-### Problemas de seguridad relacionadas con la salud.
-Los avances de la ingeniería con la biología han permitido la aparición de dispositivos portátiles para monitorizar la salud  pudiendo transmitir y compartir la información del sensor a través de internet [28], [30], [31]
-La recopilación automática de datos por parte de los sensores y su carga a las redes sociales crea una vulnerabilidad en todo el proceso de transmisión de datos desde el monitor a internet.
-considerada por [27], [32] como la principal vulnerabilidad de seguridad en estos dispositivos de monitoreo de salud sincronizados con internet como son:
+#### Aspecto negativo
+ La principal vulnerabilidad de seguridad en estos dispositivos de monitoreo de salud sincronizados con internet son:
  1. Información de inicio de sesión sin cifrar.
  2. Envio de los datos del sensor como instrucciones HTTP sin cifrar.
-Ello pone en riesgo información de valor a personas desconocidas.
+ Lo que supone un riesgo al mostrar información de valor a personas desconocidas.
+ Otro problema derivado es el robo de información confidencial (contraseñas)
+  
+## 5. Conclusión
+El objetivo de la loT es el intercambio de información entre dispositivos sin intevención manual con el fin de mejorar el bienestar del individuo y productividad en el desempeño de su vida cotidiana. Pero tiene varios defectos, el más visible es la sobre monitorización del individuo con la posibilidad de manipularlo o preveer sus acciones, lo que provocaría un rechazo a la loT y a todos sus beneficios.
 
-Otros problemas derivados son:
- 1. Robo de información confidencial (contraseñas)
- 2. Robo de información confidencial (dirección, contactos, ...)
-  . El ataque a un dispositivo puede comprometer la integridad de los demás dispositivos vinculados por lo que la interconectividad puede verse afectada
-  . La dependencia de loT a internet manifiesta la vulnerabilidad de loT a malware que circula por internet.
+La adopción de medidas de seguridad sólidas ([18],[24],[29],[34]) contrarestarian algunas situaciones de seguridad
+La implementación de sistemas de detección de intrusos ([11],[33]), criptografía y medidas estenográficas([5]) en el proceso de intercambio de información junto con métodos eficientes de comunicación [13] dotarían a la loT de una infraestructurad más segura y robusta.
+Por lo tanto desallorar medidas seguras ayudaría al desarrollo de la loT y a su adopción.
 
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
