@@ -1,6 +1,6 @@
 
 # Internet de las cosas
-(Juan Germán Gómez Gómez)
+###### Juan Germán Gómez Gómez
 
 ## Abstract
 Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT y analizaremos algunos problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
