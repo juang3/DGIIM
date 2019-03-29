@@ -137,10 +137,10 @@ Por lo tanto desallorar medidas seguras ayudaría al desarrollo de la loT y a su
 
 
 ## 8. Bibliografía
-[1]. Jason Pontin: “ETC: Bill Joy's Six Webs”. In: MIT
+1. Jason Pontin: “ETC: Bill Joy's Six Webs”. In: MIT
 Technology Review, 29 September 2005. Retrieved 17
 November 2013.
-[2]. Shen, Guicheng, and Bingwu Liu. "The visions,
+2. Shen, Guicheng, and Bingwu Liu. "The visions,
 technologies, applications and security issues of
 Internet of Things." E-Business and E-Government
 (ICEE), 2011 International Conference on. IEEE,
