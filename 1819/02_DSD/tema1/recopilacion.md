@@ -36,14 +36,62 @@ Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador
  * Las __etiquetas pasivas__ transmiten la información de su EPC cuando un lector de etiquetas le induce corriente, activando el circuito.
  * El __lector__ funciona como detector de etiquetas por su interacción con los EPC
  
------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------
-Basados en le concepto de comunicación de un dispositivo a otro (D2D) de Bill Joy [2]
-loT incorpora el concepto de libre flujo de información entre diversos dispositivos (integrados en los objetos) que utlizan internet como canal de comunicación.
-Kevin Ashton en 1982 [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interccón humana con el entorno virtual.
+ 
+## Problemas de seguridad
+### Wireless Sensor NetWork
+Los ataque a las redes de sensores pueden realizarse en distintas a distintos niveles o capas.
 
 
-loT al usar internet está expuesto a los problemas de seguridad y privacidad para los usuarios finales
+1. Capa física, encargada de la selección y generación de frecuencia portadora, modulación y demodulación, cifrado y descifrado, transmisión y recepción de datos[19].
+Ataques:
+   * Atasco o saturación:  El ataque ocupa el canal de comunicación entre nodos, lo que impide que se comuniquen.
+   * Manipulación:  Manipulación del nodo de forma física para extraer la información confidencial.
+
+2. Capa de enlace, esta capa multiplexa los divesos flujos de datos, proporcionando detección de trama de datos, MAC, y control de errores, esta capa garantiza la fiabilidad punto a punto o multipunto.
+ * Colisión: Transmisión simultánea de datos en el mismo canal de frecuencia por distintos nodos, provocando ligeros cambios en el paquete, lo que provoca su descarte por el receptor.
+ * Inundación o agotamiento: Ataque repetido basado en colisiones.
+ * Agotamiento de batería: Tráfico inusualmente alto de solicitude y transmisiones en un canal limitando la accesibilidad a los nodos.
+
+capa de red, encargada del enrutamiento de la información.
+ * Spoofing: Repetición y suplantación.
+ * (hello flood attack) Inundación: Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
+ * Homing: Busqueda de los principales cluster y administradores de claves para cerrr la red
+ * Reenvio selectivo: El atacante desde un nodo alterado selecciona los nodos a comprometer reeinviando información para inutilizarlos.
+ * Sybil: El atacante altera un nodo y lo presenta con distintas identificaciones a los demás nodos.
+ * Wormhole: Provoca la reubicación de datos mediante un tunel de bit de baja latencia.
+ * Inundación por acuse de recibo: En algoritmos de enrutamiento son necesarios estos mensajes. el atacante falsifica dicho mensaje a los vecinos destinatarios.
+
+Capa de transporte, proporciona seguridad en la transmisión de los datos y evita la congestión resultante del alto trafico de los enrutadores.
+ * Inundación: Envio de mensajes innecesarios.
+ * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
+
+DoS attack on the application layer:
+Ataque en la capa de aplicación
+La capa de aplicación lleva la gestión del tráfico y actua como proveedor de software para diferentes aplicaciones traduciendo datos de manera comprensible y ayuda en la recopilación de información mediante envio de consutas.
+
+
+PROBLEMAS DE SEGURIDAD EN LA TECNOLOFÍA RFID
+En lot se utiliza para el intercambio automatizado de información sin participación manual.
+Pero son propensas a ataques de seguridad [25] [35]
+
+1. Deshabilitación de etiquetas no autorizadas (Ataque a la autenticidad)
+Estos ataques se pueden realizar a distancia.
+
+2. Clonación de etiquetas no autorizadas (Ataque de integridad)
+Es posible mediante un lector manipulado, obtener la información confidencial de la etiqueta, pudiendo replicarse.
+Eso posibilita evitar las medidas de seguridad e introducir vulnerabilidades en cualquier industria mediante la verificación automática.
+
+3. Seguimiento de etiquetas (Ataque a la confidencialidad)
+Una etiqueta puede rastrearse mediante lectores manipulados pudiendo realizar entrega de información personal.
+en un caso extremo, la compra de un producto con etiqueta RFIP no garantiza la confidencialidad de la compra.
+
+4. Repetir ataques (Ataque a la disponibilidad, Suplantación)
+Se Utiliza la respuesta de la etiqueta ante un lector manipulado.
+La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta 
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+
 
 
 
@@ -54,8 +102,6 @@ Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un 
 * La sociedad (limitar Acceso físico al individuo)
 y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
 
-Atzori ( et al. 2010) describe la loT como una tecnología con la capacidad de integrar varias otras tecnologías de colaboración y comunicación permitiendo la recopilación de datos.
-Garnet (2014b), define la loT como la red de objetos físicos que tienen tecnológía incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
 
 En la lotT hay tres partes interesadas:
 * El usuario, sujeto de la recopilación de datos,  pues le proporciona beneficios de valor como el bienestar. 
@@ -64,12 +110,6 @@ En la lotT hay tres partes interesadas:
 
 Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
 Pero la creciente recopilación sin legislación actual, incapaz de proporcionar dicha seguridad. los usuarios solo pueden confiar en la ética que la empresa les proyecta 
-[ABSTRACT]
-El internet de las cosas (loT) aunucia una nueva era de la informática en la que cada objeto  imaginable está equipado o conectado a un dispositivo inteligente que permite la recopilación de datos y la comunicación de éstos a través de internet.
-El lot desafía la privacidad del individuo con el fin de recopilar y usar los datos generados por las personas.
-
-[ABSTRACT]
-Estudio general de los problemas de seguridad encontrados en la loT, centrado en las lagunas que surgen e las tecnologías de intercambio de información usadas por loT (No se analiza ninguna medida para contrarrestar dichos inconvenientes de seguridad).
 
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -137,6 +177,8 @@ Clarke (1999) identifica tres formas diferentes de vigilancia de datos:
 
 Como los individuos están dispuestos a ceder parte de su información personal para obtener mejores servicios ello los puede convertir en cómplices de violar su propia privacidad (Nissenbaum 1998) 
 Establecer redes de comunicación anónimas remediaría el problema pero impediría identificar a los individuos que se portan mal
+
+
 
 _______________________________________________________________________________________________________________
 ______________________________________________________________________________________________________________
