@@ -6,15 +6,15 @@
 Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT y analizaremos algunos problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
 
 ## Introducción
-El internet de las cosas se basa en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2] e incorpora el concepto de libre flujo de información entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
+El internet de las cosas se basa en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [1] e incorpora el concepto de libre flujo de información entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
 En la seción 2 veremos la visión que tienen diversos autores sobre el concepto del internet de las cosas. En la sección 3, dos de las tecnologías que utiliza la loT. En la sección 4 las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 5 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. En la sección 6 un ejemplo donde la loT aporta beneficios directos y expone los riesgo que supone algunas fallas de seguridad, y en la sección 7 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de seguridad en la privacidad.
 
 ## 2. El concepto del internet de las cosas.
-Kevin Ashton (1982) [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
+Kevin Ashton en 1982, propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
 
-Garnet (2014b), define la loT como la red de objetos físicos que tiene tecnología incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
+Garnet [17], define la loT como la red de objetos físicos que tiene tecnología incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
 
-Atzori (et al. 2010) describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
+Atzori [18] describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
 
 La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales.
 Por ello la sección 2 está oriendata a dos de las tecnologías que utiliza la loT, la sección 3 a las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 4 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. En la sección 5 un ejemplo donde la loT aporta beneficios directos y exposición de los riesgo que supo, y en la sección 5 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de seguridad en la privacidad. 
@@ -44,7 +44,7 @@ Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador
 Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas.
 
 
-1. Capa física, encargada de la selección y generación de frecuencia portadora, modulación y demodulación, cifrado y descifrado, transmisión y recepción de datos[19].
+1. Capa física, encargada de la selección y generación de frecuencia portadora, modulación y demodulación, cifrado y descifrado, transmisión y recepción de datos[7].
    * Atasco o saturación:  El ataque ocupa el canal de comunicación entre nodos, lo que impide que se comuniquen.
    * Manipulación:  Manipulación del nodo de forma física para extraer la información confidencial.
 
@@ -69,7 +69,7 @@ Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas
 
 ### 4.2 Radio Frequency Identification
 En lot se utiliza para el intercambio automatizado de información sin participación manual.
-Pero son propensas a ataques de seguridad [25] [35]
+Pero son propensas a ataques de seguridad [9] [16]
 
   1. Deshabilitación de etiquetas (Ataque a la autenticidad), provocan la incapacitación de la etiqueta temporal o permanentemente, al provocar el mal funcionamiento de éstas, pudiendo realizarse de forma remota permitiendo manipular el comportamiento de la etiqueta a distancia.
 
@@ -87,15 +87,15 @@ La señal entre etiqueta y repector es interceptada, registrada y es reproducida
 
 
 ## 5. Privacidad para el individuo
-Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
+Gibbs [20] define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
   * El secreto (control de la información)
   * El anonimato (actuar sin atención de otros)
   * La sociedad (limitar Acceso físico al individuo)
 y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
 
-Smith (et al 2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
+Smith [21] sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
 
-Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
+Mason [22] destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
   * Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
   * Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
   * Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
@@ -124,12 +124,18 @@ Los avances de la ingeniería con la biología han permitido la aparición de di
 ## 7. Conclusión
 El objetivo de la loT es el intercambio de información entre dispositivos sin intevención manual con el fin de mejorar el bienestar del individuo y productividad en el desempeño de su vida cotidiana. Pero tiene varios defectos, el más visible es la sobre monitorización del individuo con la posibilidad de manipularlo o preveer sus acciones, lo que provocaría un rechazo a la loT y a todos sus beneficios.
 
-La adopción de medidas de seguridad sólidas ([18],[24],[29],[34]) contrarestarian algunas situaciones de seguridad
-La implementación de sistemas de detección de intrusos ([11],[33]), criptografía y medidas estenográficas([5]) en el proceso de intercambio de información junto con métodos eficientes de comunicación [13] dotarían a la loT de una infraestructurad más segura y robusta.
+La adopción de medidas de seguridad sólidas ([6],[8],[11],[15]) contrarestarian algunas situaciones de seguridad
+La implementación de sistemas de detección de intrusos ([4],[14]), criptografía y medidas estenográficas([3]) en el proceso de intercambio de información junto con métodos eficientes de comunicación [5] dotarían a la loT de una infraestructurad más segura y robusta.
 Por lo tanto desallorar medidas seguras ayudaría al desarrollo de la loT y a su adopción.
 
 
-## 8. Bibliografía.
+## Bibliografía, contenido principal del trabajo
+ * https://es.wikipedia.org/wiki/Internet_de_las_cosas
+ * https://www.researchgate.net/publication/288918372_The_Internet_of_Things_IoT_and_its_impact_on_individual_privacy_An_Australian_perspective
+ * https://www.researchgate.net/publication/270763270_Survey_of_Security_and_Privacy_Issues_of_Internet_of_Things
+
+
+## 8. Bibliografía, relacionados.
 1. Jason Pontin: “ETC: Bill Joy's Six Webs”. In: MIT
 Technology Review, 29 September 2005. Retrieved 17
 November 2013.
@@ -237,10 +243,6 @@ quarterly, 35(4), pp. 989-1016
 
 22. Mason, R. O., 1986. Four ethical issues of the information age. MIS Quarterly, pp. 5-12. 
 
-## Bibliografía, contenido principal del trabajo
- * https://es.wikipedia.org/wiki/Internet_de_las_cosas
- * https://www.researchgate.net/publication/288918372_The_Internet_of_Things_IoT_and_its_impact_on_individual_privacy_An_Australian_perspective
- * https://www.researchgate.net/publication/270763270_Survey_of_Security_and_Privacy_Issues_of_Internet_of_Things
 
 
 
