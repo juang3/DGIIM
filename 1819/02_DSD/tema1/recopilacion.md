@@ -5,7 +5,7 @@
 Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT, analizaremos los problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
 
 ## Introducción
-Basado en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2], el internet de las cosas incorpora el concepto de libre flujo de información  entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
+Basado en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2], el internet de las cosas incorpora el concepto de libre flujo de información                  entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
 
 Kevin Ashton (1982) [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
 
