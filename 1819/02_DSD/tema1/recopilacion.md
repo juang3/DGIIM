@@ -2,24 +2,41 @@
 # Internet de las cosas
 
 ## Abstract
-Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT, analizaremos los problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
+Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT y analizaremos algunos problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
 
 ## Introducción
-Basado en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2], el internet de las cosas incorpora el concepto de libre flujo de información                  entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
+El internet de las cosas se basa en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2] e incorpora el concepto de libre flujo de información entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
 
 Kevin Ashton (1982) [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
 
-Atzori (et al. 2010) describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
-
 Garnet (2014b), define la loT como la red de objetos físicos que tiene tecnología incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
+
+Atzori (et al. 2010) describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
 
 Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
 
+La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales
 
-FIXME:
 
-loT al usar internet está expuesto a los problemas de seguridad y privacidad para los usuarios finales
+## Tecnologías de comunicación que usan internet para intercambiar información.
+### Wireless Sensor NetWork (WSN), red de sensores inalámbricos.
+Esta tecnología está compuesta por nodos donde cada nodo tiene:
+* Sensor, para percibir algún aspecto medible del entorno.
+* Microcontrolador, para realizar las tareas programadas.
+* Transceptor (transistor-receptor), para comunicarse con los demás nodos de la red.
+* Batería, fuente de alimentación del nodo.
 
+Una red WSN está compuesta de nodos independientes donde la comunicación se realiza en unas frecuencias y ancho de banda limitado,
+la limitación del rango en cada nodo produce un relé de información multihop entre la fuente y el destino, es decir, la información pasa de un nodo a otro cercano hasta llegar al nodo de destino.
+
+### Radio Frequency Identification (RFID), identificación por radiofrecuencia.
+Esta tecnología está utiliza los transponedores como medio de almacenamiento y recuperación de datos. 
+Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador, memoria para almacenar su identificador universal EPC (código de producto electrónico), es usada para transmitir la identidad de un dispositivo mediante ondas de radio, sin la necesidad de contacto visual entre los dispositivos.
+ * Las *etiquetas activas*
+
+Las etiquetas activas llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
+La etiqueta pasiva transmite la información de su EPC cuando un lector de etiquetas le induce corriente, activando el circuito.
+El lector funciona como detector de etiquetas por su interacción con los EPC  
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
 Basados en le concepto de comunicación de un dispositivo a otro (D2D) de Bill Joy [2]
@@ -241,3 +258,5 @@ Otros problemas derivados son:
 La adopción de medidas de seguridad sólidas ([18],[24],[29],[34]) contrarestarian algunas situaciones de seguridad
 La implementación de sistemas de detección de intrusos ([11],[33]), criptografía y medidas estenográficas([5]) en el proceso de intercambio de información  junto con métodos eficientes de comunicación [13] darían como resultado una infraestructurad e loT más segura y robusta.
 Por lo tanto desallorar medidas seguras desde ya ayudaría al desarrollo de una loT conllevaría una vida más fructífera de forma sistemática.
+
+EL OBJETIVO DE LA loT es el intercambio de información entre dispositivos son intevención manual.
