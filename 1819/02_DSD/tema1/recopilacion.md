@@ -1,13 +1,15 @@
 
 # Internet de las cosas
-###### Juan Germán Gómez Gómez
+###### Autor: Juan Germán Gómez Gómez.
 
 ## Abstract
 Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT y analizaremos algunos problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
 
 ## Introducción
 El internet de las cosas se basa en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2] e incorpora el concepto de libre flujo de información entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
+En la seción 2 veremos la visión que tienen diversos autores sobre el concepto del internet de las cosas. En la sección 3, dos de las tecnologías que utiliza la loT. En la sección 4 las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 5 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. En la sección 6 un ejemplo donde la loT aporta beneficios directos y expone los riesgo que supone algunas fallas de seguridad, y en la sección 7 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de seguridad en la privacidad.
 
+## 2. El concepto del internet de las cosas.
 Kevin Ashton (1982) [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
 
 Garnet (2014b), define la loT como la red de objetos físicos que tiene tecnología incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
@@ -17,11 +19,11 @@ Atzori (et al. 2010) describe la loT como una tecnología con capacidad para int
 Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
 
 La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales.
-Por ello la sección 2 está oriendata a dos de las tecnologías que utiliza la loT, la sección 3 a las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 4 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. NE la sección 5 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de privacidad. 
+Por ello la sección 2 está oriendata a dos de las tecnologías que utiliza la loT, la sección 3 a las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 4 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. En la sección 5 un ejemplo donde la loT aporta beneficios directos y exposición de los riesgo que supo, y en la sección 5 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de seguridad en la privacidad. 
 
 
-## 2. Tecnologías de comunicación que usan internet para intercambiar información.
-### 2.1 Wireless Sensor NetWork (WSN), red de sensores inalámbricos.
+## 3. Tecnologías de comunicación que usan internet para intercambiar información.
+### 3.1 Wireless Sensor NetWork (WSN), red de sensores inalámbricos.
 Esta tecnología está compuesta por nodos donde cada nodo tiene:
 * Sensor, para percibir algún aspecto medible del entorno.
 * Microcontrolador, para realizar las tareas programadas.
@@ -31,7 +33,7 @@ Esta tecnología está compuesta por nodos donde cada nodo tiene:
 Una red WSN está compuesta de nodos independientes donde la comunicación se realiza en unas frecuencias y ancho de banda limitado,
 la limitación del rango en cada nodo produce un relé de información multihop entre la fuente y el destino, es decir, la información pasa de un nodo a otro cercano hasta llegar al nodo de destino.
 
-### 2.2 Radio Frequency Identification (RFID), identificación por radiofrecuencia.
+### 3.2 Radio Frequency Identification (RFID), identificación por radiofrecuencia.
 Esta tecnología está utiliza los transponedores como medio de almacenamiento y recuperación de datos. 
 Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador, memoria para almacenar su identificador universal EPC (código de producto electrónico), es usada para transmitir la identidad de un dispositivo mediante ondas de radio, sin la necesidad de contacto visual entre los dispositivos.
  * Las __etiquetas activas__ llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
@@ -39,8 +41,8 @@ Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador
  * El __lector__ funciona como detector de etiquetas por su interacción con los EPC
  
  
-## 3. Problemas de seguridad
-### 3.1 Wireless Sensor NetWork
+## 4. Problemas de seguridad
+### 4.1 Wireless Sensor NetWork
 Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas.
 
 
@@ -67,7 +69,7 @@ Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas
    * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
 
 
-### 3.2 Radio Frequency Identification
+### 4.2 Radio Frequency Identification
 En lot se utiliza para el intercambio automatizado de información sin participación manual.
 Pero son propensas a ataques de seguridad [25] [35]
 
@@ -86,8 +88,8 @@ Se utiliza la respuesta de la etiqueta ante un lector manipulado.
 La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta. 
 
 
-## 4. Privacidad para el individuo
-Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
+## 5. Privacidad para el individuo
+Un estudio de Malhotra (et al. 2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
   * El acto de recopilar datos personales.
   * El control del usuario de los datos recopilados.
   * La conciencia del usuario de cómo se utilizan los datos recopilados.
@@ -98,7 +100,7 @@ Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un 
   * La sociedad (limitar Acceso físico al individuo)
 y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
 
-Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
+Smith (et al 2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
 
 Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
   * Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
@@ -114,7 +116,7 @@ En la lotT hay tres partes interesadas:
 La loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, a cualquier nivel incluso repercutiendo en el desarrollo de políticas.
 
 
-## Salud basados en la loT.
+## 6. Salud basados en la loT.
 #### Aspecto positivo
 Los avances de la ingeniería con la biología han permitido la aparición de dispositivos portátiles para monitorizar la salud  pudiendo transmitir y compartir la información del sensor a través de internet [28], [30], [31], dando la oportudidas a los profesionales a obtener patrones para una mejor atención al paciente. 
 
@@ -126,12 +128,23 @@ Los avances de la ingeniería con la biología han permitido la aparición de di
  
  Otro problema derivado es el robo de información confidencial (contraseñas).
   
-## 5. Conclusión
+## 7. Conclusión
 El objetivo de la loT es el intercambio de información entre dispositivos sin intevención manual con el fin de mejorar el bienestar del individuo y productividad en el desempeño de su vida cotidiana. Pero tiene varios defectos, el más visible es la sobre monitorización del individuo con la posibilidad de manipularlo o preveer sus acciones, lo que provocaría un rechazo a la loT y a todos sus beneficios.
 
 La adopción de medidas de seguridad sólidas ([18],[24],[29],[34]) contrarestarian algunas situaciones de seguridad
 La implementación de sistemas de detección de intrusos ([11],[33]), criptografía y medidas estenográficas([5]) en el proceso de intercambio de información junto con métodos eficientes de comunicación [13] dotarían a la loT de una infraestructurad más segura y robusta.
 Por lo tanto desallorar medidas seguras ayudaría al desarrollo de la loT y a su adopción.
+
+
+## 8. Bibliografía
+[1]. Jason Pontin: “ETC: Bill Joy's Six Webs”. In: MIT
+Technology Review, 29 September 2005. Retrieved 17
+November 2013.
+[2]. Shen, Guicheng, and Bingwu Liu. "The visions,
+technologies, applications and security issues of
+Internet of Things." E-Business and E-Government
+(ICEE), 2011 International Conference on. IEEE,
+2011.
 
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
