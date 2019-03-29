@@ -16,8 +16,6 @@ Garnet (2014b), define la loT como la red de objetos físicos que tiene tecnolog
 
 Atzori (et al. 2010) describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
 
-Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
-
 La loT al utilizar diversas tecnologías está expuesta a los problemas de seguridad y privacidad que afectan a los usuarios finales.
 Por ello la sección 2 está oriendata a dos de las tecnologías que utiliza la loT, la sección 3 a las lagunas de seguridad que se han encontrado en estas tecnologías, en la sección 4 se abarca la visión de la privacidad de los usuarios finales y los elementos que la componen según diverso autores. En la sección 5 un ejemplo donde la loT aporta beneficios directos y exposición de los riesgo que supo, y en la sección 5 una conclusión sobre los beneficios de la loT y de los peligros que puede ocasionar la falta de seguridad en la privacidad. 
 
@@ -89,11 +87,6 @@ La señal entre etiqueta y repector es interceptada, registrada y es reproducida
 
 
 ## 5. Privacidad para el individuo
-Un estudio de Malhotra (et al. 2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
-  * El acto de recopilar datos personales.
-  * El control del usuario de los datos recopilados.
-  * La conciencia del usuario de cómo se utilizan los datos recopilados.
-
 Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
   * El secreto (control de la información)
   * El anonimato (actuar sin atención de otros)
@@ -136,225 +129,122 @@ La implementación de sistemas de detección de intrusos ([11],[33]), criptograf
 Por lo tanto desallorar medidas seguras ayudaría al desarrollo de la loT y a su adopción.
 
 
-## 8. Bibliografía
+## 8. Bibliografía.
 1. Jason Pontin: “ETC: Bill Joy's Six Webs”. In: MIT
 Technology Review, 29 September 2005. Retrieved 17
 November 2013.
+
 2. Shen, Guicheng, and Bingwu Liu. "The visions,
 technologies, applications and security issues of
 Internet of Things." E-Business and E-Government
 (ICEE), 2011 International Conference on. IEEE,
 2011.
 
------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------
+3. Dey, Sandipan, Ajith Abraham, and Sugata Sanyal.
+"An LSB Data Hiding Technique Using Prime
+Numbers." Information Assurance and Security, 2007.
+IAS 2007. Third International Symposium on. IEEE,
+2007
+
+4. Bhattasali, Tapalina, Rituparna Chaki, and Sugata
+Sanyal. "Sleep Deprivation Attack Detection in
+Wireless Sensor Network." arXiv preprint arXiv:
+1203.0231(2012).
+
+5.  Roy, Bibhash, Suman Banik, Parthi Dey, Sugata Sanyal
+and Nabendu Chaki, "Ant colony based routing for
+mobile ad-hoc networks towards improved quality of
+services." Journal of Emerging Trends in Computing
+and Information Sciences 3.1 (2012): 10-14
+
+6. Vipul Goyal, Virendra Kumar, Mayank Singh, Ajith
+Abraham and Sugata Sanyal: A New Protocol to
+Counter Online Dictionary Attacks, Computers and
+Security, Volume 25, Issue 2, pp. 114-120, Elsevier
+Science, March, 2006. This paper is now listed in the
+top 25 articles of the COMPUTER SCIENCE
+(Computer and Security)
+
+7. http://sensors-and-networks.blogspot.in/2011/08/physical-layer-for-wireless-sensor.html
+
+8. Vipul Goyal, Ajith Abraham, Sugata Sanyal and Sang
+Yong Han, “The N/R One Time Password System.”
+Information Assurance and Security Track (IAS'05),
+IEEE International Conference on Information
+Technology: Coding and Computing (ITCC'05), USA,
+April, 2005. pp 733-738, IEEE Computer Society
+
+9. Burmester, Mike, and Breno De Medeiros. "RFID
+security: attacks, countermeasures and
+challenges." The 5th RFID Academic Convocation,
+The RFID Journal Conference. 2007.
+
+10. Aggarwal, Charu C., and Tarek Abdelzaher.
+"Integrating sensors and social networks." Social
+Network Data Analytics. Springer US, 2011. 379-412.
+
+11. Vipul Goyal, Virendra Kumar, Mayank Singh, Ajith
+Abraham and Sugata Sanyal, CompChall: Addressing
+Password Guessing Attacks Information Assurance
+and Security Track (IAS'05), IEEE International
+Conference on Information Technology: Coding and
+Computing (ITCC'05), USA. April 2005, pp 739-744,
+IEEE Computer Society. 
+
+12. W. Drira, Renault, E., Zeghlache, D. “Towards a
+Secure Social Sensor Network.” Proceedings of the
+IEEE International Conference on Bioinformatics and
+Biomedicine, pp. 24-29, 2013.
+
+13. N. Eagle, Pentland, A., and Lazer, D. “Inferring Social
+Network Structure using Mobile Phone Data.”
+Proceedings of the National Academy of Sciences
+(PNAS), 2009. vol. 106 no. 36 Nathan Eagle, 15274–
+15278, doi: 10.1073/pnas.0900282106
+
+14. Animesh Kr Trivedi, Rishi Kapoor, Rajan Arora, Sudip
+Sanyal and Sugata Sanyal, “RISM - Reputation Based
+Intrusion Detection System for Mobile Ad hoc
+Networks”, Third International Conference on
+Computers and Devices for Communications,
+CODEC-06, pp. 234-237. Institute of Radio Physics
+and Electronics, University of Calcutta, December 18-
+20, 2006, Kolkata, India
+
+15. R. A. Vasudevan, A. Abraham, S. Sanyal and D. P.
+Agrawal, “Jigsaw-based Secure Data Transfer over
+Computer Networks,” IEEE International Conference
+on Information Technology: Coding and Computing,
+2004. (ITCC ’04), Proceedings of ITCC 2004, Vol. 1,
+pp 2-6, April, 2004, Las Vegas, Nevada.
+
+16. Xiao, Qinghan, Thomas Gibbons, and Hervé Lebrun.
+"RFID Technology, Security Vulnerabilities, and
+Countermeasures." Supply Chain the Way to Flat
+Organization, Publisher-Intech (2009): 357-382.
+
+17. Gartner, 2014b. Internet of Things - Gartner IT Glossary. [Online] Available at:
+http://www.gartner.com/it-glossary/internet-of-things/ [Accessed 15 August 2014]. 
+
+18. Atzori, L., Iera, A. & Morabito, G., 2010. The Internet of Things: A survey. Computer Networks, Issue
+54, p. 2787–2805. 
+
+19. Gibbs, M., 2008. Privacy. In: D. McDermid, ed. Ethics in ICT: An Australian Perspective. NSW:
+Pearson, pp. 89-119. 
+
+21. Smith, H. J., Dinev, T. & Xu, H., 2011. Information privacy research: an interdisciplinary review. MIS
+quarterly, 35(4), pp. 989-1016
+
+22. Mason, R. O., 1986. Four ethical issues of the information age. MIS Quarterly, pp. 5-12. 
+
+## Bibliografía, contenido principal del trabajo
+ * https://es.wikipedia.org/wiki/Internet_de_las_cosas
+ * https://www.researchgate.net/publication/288918372_The_Internet_of_Things_IoT_and_its_impact_on_individual_privacy_An_Australian_perspective
+ * https://www.researchgate.net/publication/270763270_Survey_of_Security_and_Privacy_Issues_of_Internet_of_Things
 
 
 
 
-[INTRODUCCIÓN]
-Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
-* El secreto (control de la información)
-* El anonimato (actuar sin atención de otros)
-* La sociedad (limitar Acceso físico al individuo)
-y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
+	
+	
 
-
-En la lotT hay tres partes interesadas:
-* El usuario, sujeto de la recopilación de datos,  pues le proporciona beneficios de valor como el bienestar. 
-* Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
-* Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
-
-Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
-Pero la creciente recopilación sin legislación actual, incapaz de proporcionar dicha seguridad. los usuarios solo pueden confiar en la ética que la empresa les proyecta 
-
------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------
-Origen:
-	https://es.wikipedia.org/wiki/Internet_de_las_cosas
-
-
-
-The Internet of Things (IoT): Applications, Technology, and Privacy Issues (Internet Theory, Technology and Applications) PDF
-
-Link:
-	https://www.researchgate.net/publication/288918372_The_Internet_of_Things_IoT_and_its_impact_on_individual_privacy_An_Australian_perspective
-	https://www.researchgate.net/publication/270763270_Survey_of_Security_and_Privacy_Issues_of_Internet_of_Things
-
---------------------------------------------------------------------------------------------------------------
-THE INTERNET OF THINGS AND ITS IMPACT ON INDIVIDUAL PRIVACY: AN
-AUSTRALIAN PRIVACY PRINCIPLE PERSPECTIVE
---------------------------------------------------------------------------------------------------------------
-[ASTRACT]
-El internet de las cosas (loT) aunucia una nueva era de la informática en la que cada objeto  imaginable está equipado o conectado a un dispositivo inteligente que permite la recopilación de datos y la comunicación de éstos a través de internet.
-El lot desafía la privacidad del individuo con el fin de recopilar y usar los datos generados por las personas.
-
-[PALABRAS CLAVE]
-autenticación, riesgo de piratería, provacidad individual, internet de las cosas, seguridad, vigilancia, ubicuidad.
-
-[INTRODUCCIÓN]
-Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
-* El secreto (control de la información)
-* El anonimato (actuar sin atención de otros)
-* La sociedad (limitar Acceso físico al individuo)
-y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
-
-Atzori ( et al. 2010) describe la loT como una tecnología con la capacidad de integrar varias otras tecnologías de colaboración y comunicación permitiendo la recopilación de datos.
-Garnet (2014b), define la loT como la red de objetos físicos que tienen tecnológía incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
-
-En la lotT hay tres partes interesadas:
-* El usuario, sujeto de la recopilación de datos,  pues le proporciona beneficios de valor como el bienestar. 
-* Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
-* Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
-
-Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
-Pero la creciente recopilación sin legislación actual, incapaz de proporcionar dicha seguridad. los usuarios solo pueden confiar en la ética que la empresa les proyecta 
-
-[2.2 PRIVACIDAD PARA EL INDIVIDUO]
-Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
-
-* Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
-* Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
-* Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
-* Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
-
-Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
-
-loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, lo que repercute en el desarrollo de políticas.
-
-Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
-1. El acto de recopilar datos personales.
-2. El control del usuario de los datos recopilados.
-3. La conciencia del usuario de cómo se utilizan los datos recopilados.
-
-Clarke (1999) identifica tres formas diferentes de vigilancia de datos:
-* verificación Front-End (formularios de verificación).
-* comparación por computadora (fusión de datos de distintas fuentes)
-* perfiles (extracción de datos basadas en experiencias pasadas)
-
-Como los individuos están dispuestos a ceder parte de su información personal para obtener mejores servicios ello los puede convertir en cómplices de violar su propia privacidad (Nissenbaum 1998) 
-Establecer redes de comunicación anónimas remediaría el problema pero impediría identificar a los individuos que se portan mal
-
-
-
-_______________________________________________________________________________________________________________
-______________________________________________________________________________________________________________
-
-
-----------------------------------------------------------------------------------------------------------------------------------------------------
-Survey of Security and Privacy Issues of Internet
-of Things (Estudio de seguridad y privacidad en el internet de las cosas)
-----------------------------------------------------------------------------------------------------------------------------------------------------
-[ABSTRACT]
-Estudio general de los problemas de seguridad encontrados en la loT, centrado en las lagunas que surgen e las tecnologías de intercambio de información usadas por loT (No se analiza ninguna medida para contrarrestar dichos inconvenientes de seguridad).
-
-[INTRODUCCION]
-Basados en le concepto de comunicación de un dispositivo a otro (D2D) de Bill Joy [2]
-loT incorpora el concepto de libre flujo de información entre diversos dispositivos (integrados en los objetos) que utlizan internet como canal de comunicación.
-Kevin Ashton en 1982 [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interccón humana con el entorno virtual.
-
-loT al usar internet está expuesto a los problemas de seguridad y privacidad para los usuarios finales
-
-[Seccion3] Tecnologías de comunicación que usan internet para intercambiar información.
-[Seccion4] Análisis de los problemas de seguridad que afectan a loT
-[Seccion4] Analisis de los problemas de privacidad derivados de utilizar loT
-[Seccion5] Propuesta de pasos a seguir para abordar los problemas de seguridad de loT.
-
-[SECCIÓN 3] Tecnologías de conectividad e integración entre dispositivos
-EL OBJETIVO DE LA loT es el intercambio de información entre disppositivos son intevención manual.
-
-1. Wireless Sensor NetWork (WSN) [3], red de sensores inalámbricos
-Componentes de cada nodo: Sensor, microcontrolador, transistor-receptor de radio (transceptor), batería.
-Es una composición de nodos independientes cuya comunicación tiene lugar en una frecuencia y ancho de banda limitado.
-Debido al rango limitado de cada nodo se produce un relé de información multihop entre fuente y destino (comunicación de un nodo a otro hasta llegar al nodo destino)
-La transmisión de en multi-hop exigen diferentes nodos para la transmisión de datos, para soportar diversas cargas de tráfico [2]
-
-2. Radio Frequency Identification (RFID), identificación por radiofrecuencia 
-es un sistema de almacenamiento y recuperación de datos.
-Se usa para transmitir la iddentidad de un dispositivo mediante ondas de radio, sin la necesidad de contacto visual entre dispositivos.
-
-Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador, memoria para almacenar su identificador universal EPC (código de producto electrónico)
-
-Las etiquetas activas llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
-La etiqueta pasiva transmite la información de su EPC cuando un lector de etiquetas le induce corriente, activando el circuito.
-El lector funciona como detector de etiquetas por su interacción con los EPC  
-
-[SECCIÓN 4] PROBLEMAS DE SEGURIDAD
-TECNOLOGÍA WSN
-Los ataque a las redes de sensores pueden realizarse en distintas fases y capas.
-* Ataque anónimo y autenticación.
-* Ataque silencioso a la integridad del servicio
-* Ataque a la disponibilidad (denegación de servicio)
-
-
-Capa física:
- *. Atasco o saturación:  El ataque ocupa el canal de comunicación entre nodos, lo que impide que se comuniquen.
- * Manipulación:  Manipulación del nodo de forma física para extraer la información confidencial.
-
-Capa de enlace, esta capa multiplexa los divesos flujos de datos, proporcionando detección de trama de datos, MAC, y control de errores.
-esta capa garantiza la fiabilidad punto a punto o multipunto.
- * Colisión: Transmisión simultánea de datos en el mismo canal de frecuencia por distintos nodos, provocando ligeros cambios en el paquete, lo que provoca su descarte por el receptor.
- * Inundación o agotamiento: Ataque repetido basado en colisiones.
- * Agotamiento de batería: Tráfico inusualmente alto de solicitude y transmisiones en un canal limitando la accesibilidad a los nodos.
-
-capa de red, encargada del enrutamiento de la información.
- * Spoofing: Repetición y suplantación.
- * (hello flood attack) Inundación: Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
- * Homing: Busqueda de los principales cluster y administradores de claves para cerrr la red
- * Reenvio selectivo: El atacante desde un nodo alterado selecciona los nodos a comprometer reeinviando información para inutilizarlos.
- * Sybil: El atacante altera un nodo y lo presenta con distintas identificaciones a los demás nodos.
- * Wormhole: Provoca la reubicación de datos mediante un tunel de bit de baja latencia.
- * Inundación por acuse de recibo: En algoritmos de enrutamiento son necesarios estos mensajes. el atacante falsifica dicho mensaje a los vecinos destinatarios.
-
-Capa de transporte, proporciona seguridad en la transmisión de los datos y evita la congestión resultante del alto trafico de los enrutadores.
- * Inundación: Envio de mensajes innecesarios.
- * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
-
-DoS attack on the application layer:
-Ataque en la capa de aplicación
-La capa de aplicación lleva la gestión del tráfico y actua como proveedor de software para diferentes aplicaciones traduciendo datos de manera comprensible y ayuda en la recopilación de información mediante envio de consutas.
-
-
-PROBLEMAS DE SEGURIDAD EN LA TECNOLOFÍA RFID
-En lot se utiliza para el intercambio automatizado de información sin participación manual.
-Pero son propensas a ataques de seguridad [25] [35]
-
-1. Deshabilitación de etiquetas no autorizadas (Ataque a la autenticidad)
-Estos ataques se pueden realizar a distancia.
-
-2. Clonación de etiquetas no autorizadas (Ataque de integridad)
-Es posible mediante un lector manipulado, obtener la información confidencial de la etiqueta, pudiendo replicarse.
-Eso posibilita evitar las medidas de seguridad e introducir vulnerabilidades en cualquier industria mediante la verificación automática.
-
-3. Seguimiento de etiquetas (Ataque a la confidencialidad)
-Una etiqueta puede rastrearse mediante lectores manipulados pudiendo realizar entrega de información personal.
-en un caso extremo, la compra de un producto con etiqueta RFIP no garantiza la confidencialidad de la compra.
-
-4. Repetir ataques (Ataque a la disponibilidad, Suplantación)
-Se Utiliza la respuesta de la etiqueta ante un lector manipulado.
-La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta 
-
-
-
-4.7 Problemas de seguridad en tecnologías relacionadas con la salud basadas en loT.
-Los avances de la ingeniería con la biología han permitido la aparición de dispositivos portátiles para monitorizar la salud  pudiendo transmitir y compartir la información del sensor a través de internet [28], [30], [31]
-La recopilación automática de datos por parte de los sensores y su carga a las redes sociales crea una vulnerabilidad en todo el proceso de transmisión de datos desde el monitor a internet.
-considerada por [27], [32] como la principal vulnerabilidad de seguridad en estos dispositivos de monitoreo de salud sincronizados con internet como son:
- 1. Información de inicio de sesión sin cifrar.
- 2. Envio de los datos del sensor como instrucciones HTTP sin cifrar.
-Ello pone en riesgo información de valor a personas desconocidas.
-
-Otros problemas derivados son:
- 1. Robo de información confidencial (contraseñas)
- 2. Robo de información confidencial (dirección, contactos, ...)
-  . El ataque a un dispositivo puede comprometer la integridad de los demás dispositivos vinculados por lo que la interconectividad puede verse afectada
-  . La dependencia de loT a internet manifiesta la vulnerabilidad de loT a malware que circula por internet.
-
-
-
-5. Conclusiones:
-La adopción de medidas de seguridad sólidas ([18],[24],[29],[34]) contrarestarian algunas situaciones de seguridad
-La implementación de sistemas de detección de intrusos ([11],[33]), criptografía y medidas estenográficas([5]) en el proceso de intercambio de información  junto con métodos eficientes de comunicación [13] darían como resultado una infraestructurad e loT más segura y robusta.
-Por lo tanto desallorar medidas seguras desde ya ayudaría al desarrollo de una loT conllevaría una vida más fructífera de forma sistemática.
-
-EL OBJETIVO DE LA loT es el intercambio de información entre dispositivos son intevención manual.
