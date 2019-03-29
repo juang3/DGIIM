@@ -39,43 +39,37 @@ Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador
  
 ## Problemas de seguridad
 ### Wireless Sensor NetWork
-Los ataque a las redes de sensores pueden realizarse en distintas a distintos niveles o capas.
+Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas.
 
 
 1. Capa física, encargada de la selección y generación de frecuencia portadora, modulación y demodulación, cifrado y descifrado, transmisión y recepción de datos[19].
-Ataques:
    * Atasco o saturación:  El ataque ocupa el canal de comunicación entre nodos, lo que impide que se comuniquen.
    * Manipulación:  Manipulación del nodo de forma física para extraer la información confidencial.
 
 2. Capa de enlace, esta capa multiplexa los divesos flujos de datos, proporcionando detección de trama de datos, MAC, y control de errores, esta capa garantiza la fiabilidad punto a punto o multipunto.
- * Colisión: Transmisión simultánea de datos en el mismo canal de frecuencia por distintos nodos, provocando ligeros cambios en el paquete, lo que provoca su descarte por el receptor.
- * Inundación o agotamiento: Ataque repetido basado en colisiones.
- * Agotamiento de batería: Tráfico inusualmente alto de solicitude y transmisiones en un canal limitando la accesibilidad a los nodos.
+   * Colisión: Transmisión simultánea de datos en el mismo canal de frecuencia por distintos nodos, provocando ligeros cambios en el paquete, lo que provoca su descarte por el receptor.
+   * Inundación o agotamiento: Ataque repetido basado en colisiones.
+   * Agotamiento de batería: Tráfico inusualmente alto de solicitude y transmisiones en un canal limitando la accesibilidad a los nodos.
 
-capa de red, encargada del enrutamiento de la información.
+3. Capa de red, encargada del enrutamiento de la información.
  * Spoofing: Repetición y suplantación.
- * (hello flood attack) Inundación: Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
+ * Inundación (hello flood attack): Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
  * Homing: Busqueda de los principales cluster y administradores de claves para cerrr la red
  * Reenvio selectivo: El atacante desde un nodo alterado selecciona los nodos a comprometer reeinviando información para inutilizarlos.
  * Sybil: El atacante altera un nodo y lo presenta con distintas identificaciones a los demás nodos.
  * Wormhole: Provoca la reubicación de datos mediante un tunel de bit de baja latencia.
  * Inundación por acuse de recibo: En algoritmos de enrutamiento son necesarios estos mensajes. el atacante falsifica dicho mensaje a los vecinos destinatarios.
 
-Capa de transporte, proporciona seguridad en la transmisión de los datos y evita la congestión resultante del alto trafico de los enrutadores.
+4. Capa de transporte, proporciona seguridad en la transmisión de los datos y evita la congestión resultante del alto trafico de los enrutadores.
  * Inundación: Envio de mensajes innecesarios.
  * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
 
-DoS attack on the application layer:
-Ataque en la capa de aplicación
-La capa de aplicación lleva la gestión del tráfico y actua como proveedor de software para diferentes aplicaciones traduciendo datos de manera comprensible y ayuda en la recopilación de información mediante envio de consutas.
 
-
-PROBLEMAS DE SEGURIDAD EN LA TECNOLOFÍA RFID
+### Radio Frequency Identification
 En lot se utiliza para el intercambio automatizado de información sin participación manual.
 Pero son propensas a ataques de seguridad [25] [35]
 
-1. Deshabilitación de etiquetas no autorizadas (Ataque a la autenticidad)
-Estos ataques se pueden realizar a distancia.
+1. Deshabilitación de etiquetas (Ataque a la autenticidad), provocan la incapacitación de la etiqueta temporal o permanentemente, al provocar el mal funcionamiento de éstas, pudiendo realizarse de forma remota permitiendo manipular el comportamiento de la etiqueta a distancia.
 
 2. Clonación de etiquetas no autorizadas (Ataque de integridad)
 Es posible mediante un lector manipulado, obtener la información confidencial de la etiqueta, pudiendo replicarse.
@@ -86,8 +80,54 @@ Una etiqueta puede rastrearse mediante lectores manipulados pudiendo realizar en
 en un caso extremo, la compra de un producto con etiqueta RFIP no garantiza la confidencialidad de la compra.
 
 4. Repetir ataques (Ataque a la disponibilidad, Suplantación)
-Se Utiliza la respuesta de la etiqueta ante un lector manipulado.
-La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta 
+Se utiliza la respuesta de la etiqueta ante un lector manipulado.
+La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta. 
+
+
+## Privacidad para el individuo
+Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
+1. El acto de recopilar datos personales.
+2. El control del usuario de los datos recopilados.
+3. La conciencia del usuario de cómo se utilizan los datos recopilados.
+
+Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
+* El secreto (control de la información)
+* El anonimato (actuar sin atención de otros)
+* La sociedad (limitar Acceso físico al individuo)
+y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
+
+Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
+
+Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
+* Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
+* Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
+* Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
+* Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
+
+En la lotT hay tres partes interesadas:
+* El usuario, sujeto de la recopilación de datos, pues le proporciona beneficios de valor como el bienestar. 
+* Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
+* Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
+
+La loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, a cualquier nivel incluso repercutiendo en el desarrollo de políticas.
+
+
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+### Problemas de seguridad relacionadas con la salud.
+Los avances de la ingeniería con la biología han permitido la aparición de dispositivos portátiles para monitorizar la salud  pudiendo transmitir y compartir la información del sensor a través de internet [28], [30], [31]
+La recopilación automática de datos por parte de los sensores y su carga a las redes sociales crea una vulnerabilidad en todo el proceso de transmisión de datos desde el monitor a internet.
+considerada por [27], [32] como la principal vulnerabilidad de seguridad en estos dispositivos de monitoreo de salud sincronizados con internet como son:
+ 1. Información de inicio de sesión sin cifrar.
+ 2. Envio de los datos del sensor como instrucciones HTTP sin cifrar.
+Ello pone en riesgo información de valor a personas desconocidas.
+
+Otros problemas derivados son:
+ 1. Robo de información confidencial (contraseñas)
+ 2. Robo de información confidencial (dirección, contactos, ...)
+  . El ataque a un dispositivo puede comprometer la integridad de los demás dispositivos vinculados por lo que la interconectividad puede verse afectada
+  . La dependencia de loT a internet manifiesta la vulnerabilidad de loT a malware que circula por internet.
 
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
@@ -157,17 +197,17 @@ Pero la creciente recopilación sin legislación actual, incapaz de proporcionar
 Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
 
 * Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
-* Exactitud:   Se refiere a quie en es el responsable de la veracidad de la información, autenticidad y fidelidad.
+* Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
 * Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
-*  Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
+* Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
 
-Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética entán relacionados con la privacidad de la información.
+Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
 
 loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, lo que repercute en el desarrollo de políticas.
 
 Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
-1. El acto de recopilar datos personales
-2. El control del usuario de los datos recopilados
+1. El acto de recopilar datos personales.
+2. El control del usuario de los datos recopilados.
 3. La conciencia del usuario de cómo se utilizan los datos recopilados.
 
 Clarke (1999) identifica tres formas diferentes de vigilancia de datos:
