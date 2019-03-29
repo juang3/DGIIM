@@ -122,7 +122,8 @@ Los avances de la ingeniería con la biología han permitido la aparición de di
    * Información de inicio de sesión sin cifrar.
    * Envio de los datos del sensor como instrucciones HTTP sin cifrar.
  Lo que supone un riesgo al mostrar información de valor a personas desconocidas.
- Otro problema derivado es el robo de información confidencial (contraseñas)
+ 
+ Otro problema derivado es el robo de información confidencial (contraseñas).
   
 ## 5. Conclusión
 El objetivo de la loT es el intercambio de información entre dispositivos sin intevención manual con el fin de mejorar el bienestar del individuo y productividad en el desempeño de su vida cotidiana. Pero tiene varios defectos, el más visible es la sobre monitorización del individuo con la posibilidad de manipularlo o preveer sus acciones, lo que provocaría un rechazo a la loT y a todos sus beneficios.
