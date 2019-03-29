@@ -53,62 +53,62 @@ Los ataque a las redes de sensores pueden realizarse a distintos niveles o capas
    * Agotamiento de batería: Tráfico inusualmente alto de solicitude y transmisiones en un canal limitando la accesibilidad a los nodos.
 
 3. Capa de red, encargada del enrutamiento de la información.
- * Spoofing: Repetición y suplantación.
- * Inundación (hello flood attack): Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
- * Homing: Busqueda de los principales cluster y administradores de claves para cerrr la red
- * Reenvio selectivo: El atacante desde un nodo alterado selecciona los nodos a comprometer reeinviando información para inutilizarlos.
- * Sybil: El atacante altera un nodo y lo presenta con distintas identificaciones a los demás nodos.
- * Wormhole: Provoca la reubicación de datos mediante un tunel de bit de baja latencia.
- * Inundación por acuse de recibo: En algoritmos de enrutamiento son necesarios estos mensajes. el atacante falsifica dicho mensaje a los vecinos destinatarios.
+   * Spoofing: Repetición y suplantación.
+   * Inundación (hello flood attack): Un nodo alterado envía un mensaje inutil que reproduce el atacante para provocar un alto tráfico y congestión en el canal.
+   * Homing: Busqueda de los principales cluster y administradores de claves para cerrr la red
+   * Reenvio selectivo: El atacante desde un nodo alterado selecciona los nodos a comprometer reeinviando información para inutilizarlos.
+   * Sybil: El atacante altera un nodo y lo presenta con distintas identificaciones a los demás nodos.
+   * Wormhole: Provoca la reubicación de datos mediante un tunel de bit de baja latencia.
+   * Inundación por acuse de recibo: En algoritmos de enrutamiento son necesarios estos mensajes. el atacante falsifica dicho mensaje a los vecinos destinatarios.
 
 4. Capa de transporte, proporciona seguridad en la transmisión de los datos y evita la congestión resultante del alto trafico de los enrutadores.
- * Inundación: Envio de mensajes innecesarios.
- * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
+   * Inundación: Envio de mensajes innecesarios.
+   * Desincronización: Se crean mensajes falsos en un extremo y solicita retrasmisión para corregir errores inexistentes, ello provoca la pérdida de energía en el extremo final por tener que realizar las instrucciones falsas.
 
 
 ### 3.2 Radio Frequency Identification
 En lot se utiliza para el intercambio automatizado de información sin participación manual.
 Pero son propensas a ataques de seguridad [25] [35]
 
-1. Deshabilitación de etiquetas (Ataque a la autenticidad), provocan la incapacitación de la etiqueta temporal o permanentemente, al provocar el mal funcionamiento de éstas, pudiendo realizarse de forma remota permitiendo manipular el comportamiento de la etiqueta a distancia.
+  1. Deshabilitación de etiquetas (Ataque a la autenticidad), provocan la incapacitación de la etiqueta temporal o permanentemente, al provocar el mal funcionamiento de éstas, pudiendo realizarse de forma remota permitiendo manipular el comportamiento de la etiqueta a distancia.
 
-2. Clonación de etiquetas no autorizadas (Ataque de integridad)
+  2. Clonación de etiquetas no autorizadas (Ataque de integridad)
 Es posible mediante un lector manipulado, obtener la información confidencial de la etiqueta, pudiendo replicarse.
 Eso posibilita evitar las medidas de seguridad e introducir vulnerabilidades en cualquier industria mediante la verificación automática.
 
-3. Seguimiento de etiquetas (Ataque a la confidencialidad)
+  3. Seguimiento de etiquetas (Ataque a la confidencialidad)
 Una etiqueta puede rastrearse mediante lectores manipulados pudiendo realizar entrega de información personal.
 en un caso extremo, la compra de un producto con etiqueta RFIP no garantiza la confidencialidad de la compra.
 
-4. Repetir ataques (Ataque a la disponibilidad, Suplantación)
+  4. Repetir ataques (Ataque a la disponibilidad, Suplantación)
 Se utiliza la respuesta de la etiqueta ante un lector manipulado.
 La señal entre etiqueta y repector es interceptada, registrada y es reproducida, simulando la disponibilidad de la etiqueta. 
 
 
 ## 4. Privacidad para el individuo
 Un estudio de Malhotra et al. (2004) identifica tres problemas de privacidad de la información asociados con las usuarios de internet:
-1. El acto de recopilar datos personales.
-2. El control del usuario de los datos recopilados.
-3. La conciencia del usuario de cómo se utilizan los datos recopilados.
+  * El acto de recopilar datos personales.
+  * El control del usuario de los datos recopilados.
+  * La conciencia del usuario de cómo se utilizan los datos recopilados.
 
 Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
-* El secreto (control de la información)
-* El anonimato (actuar sin atención de otros)
-* La sociedad (limitar Acceso físico al individuo)
+  * El secreto (control de la información)
+  * El anonimato (actuar sin atención de otros)
+  * La sociedad (limitar Acceso físico al individuo)
 y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
 
 Smith et al (2011) sostiene que los conceptos de confidencialidad, secreto, anonimato, seguridad y ética están relacionados con la privacidad de la información.
 
 Mason (1986) destaca cuatro aspectos éticos clave: privacidad, precisión, propiedad y accesibilidad.
-* Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
-* Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
-* Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
-* Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
+  * Privacidad: Se refiere a la información del individuo que permiter revelar a su entorno sin obligación a ello.
+  * Exactitud:   Se refiere a quién es el responsable de la veracidad de la información, autenticidad y fidelidad.
+  * Propiedad: Referido a la propiedad de la información y qué medios justificables para pagar su intercambio.
+  * Accesibilidad: Se refiere a los derechos que una persona (u organización) tiene para obtener la información específica.
 
 En la lotT hay tres partes interesadas:
-* El usuario, sujeto de la recopilación de datos, pues le proporciona beneficios de valor como el bienestar. 
-* Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
-* Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
+  * El usuario, sujeto de la recopilación de datos, pues le proporciona beneficios de valor como el bienestar. 
+  * Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
+  * Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
 
 La loT ofrece la posibilidad a los tomadores de decisiones a tomar decisiones más informadas, a cualquier nivel incluso repercutiendo en el desarrollo de políticas.
 
@@ -119,8 +119,8 @@ Los avances de la ingeniería con la biología han permitido la aparición de di
 
 #### Aspecto negativo
  La principal vulnerabilidad de seguridad en estos dispositivos de monitoreo de salud sincronizados con internet son:
- 1. Información de inicio de sesión sin cifrar.
- 2. Envio de los datos del sensor como instrucciones HTTP sin cifrar.
+   * Información de inicio de sesión sin cifrar.
+   * Envio de los datos del sensor como instrucciones HTTP sin cifrar.
  Lo que supone un riesgo al mostrar información de valor a personas desconocidas.
  Otro problema derivado es el robo de información confidencial (contraseñas)
   
