@@ -1,3 +1,62 @@
+
+# Internet de las cosas
+
+## Abstract
+Internet de las cosas (loT), es una tecnología basada en la comunicación de un dispositivo a otro dispositivo sin la invervención humana directa a través de internet con el fin de recopilar datos y compartirlos. La dependencia a internet hace que las vulnerabilidades de ésta también afecten a la loT, analizaremos los problemas de seguridad encontrados en las loT provocados por las tecnologías que usa.
+
+## Introducción
+Basado en el concepto de cominucación de un dispositivo a otro (D2D) de Bill Joy [2], el internet de las cosas incorpora el concepto de libre flujo de información  entre los diversos dispositivos integrados en los objetos que utilizan internet como canal de comunicación.
+
+Kevin Ashton (1982) [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interacción humana con el entorno virtual.
+
+Atzori (et al. 2010) describe la loT como una tecnología con capacidad para integrar otras tecnologías de colaboración y comunicación  permitiendo la recopilación de datos.
+
+Garnet (2014b), define la loT como la red de objetos físicos que tiene tecnología incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
+
+Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
+
+
+FIXME:
+
+loT al usar internet está expuesto a los problemas de seguridad y privacidad para los usuarios finales
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
+Basados en le concepto de comunicación de un dispositivo a otro (D2D) de Bill Joy [2]
+loT incorpora el concepto de libre flujo de información entre diversos dispositivos (integrados en los objetos) que utlizan internet como canal de comunicación.
+Kevin Ashton en 1982 [2], propuso el término loT con el objetivo de proporcionar un modo de comunicación entre dispositivos de diversos sistemas y facilitar la interccón humana con el entorno virtual.
+
+
+loT al usar internet está expuesto a los problemas de seguridad y privacidad para los usuarios finales
+
+
+
+[INTRODUCCIÓN]
+Gibbs (2008) define la privacidad como la "limitación del acceso de otros a un individuo", y se basa en tres elementos:
+* El secreto (control de la información)
+* El anonimato (actuar sin atención de otros)
+* La sociedad (limitar Acceso físico al individuo)
+y menciona la importancia de equilibrar las necesidades de privacidad personal con otros derechos como el bien social.
+
+Atzori ( et al. 2010) describe la loT como una tecnología con la capacidad de integrar varias otras tecnologías de colaboración y comunicación permitiendo la recopilación de datos.
+Garnet (2014b), define la loT como la red de objetos físicos que tienen tecnológía incorporada para comunicarse y sentir o interactuar con sus estados internos o entorno externo.
+
+En la lotT hay tres partes interesadas:
+* El usuario, sujeto de la recopilación de datos,  pues le proporciona beneficios de valor como el bienestar. 
+* Las organizaciones, encargadas de porcesar los datos de los sujetos, pues le proporciona la oportunidad de mejorar sus servicios 
+* Terceros, que utilizan los datos procesados, pues le proporciona la oportunidad de mejorar sus servicios.
+
+Weber (2009) Indica que el propósito de la loT es el intercambio de información entre los dispositivos de una manera "segura" y "fiable".
+Pero la creciente recopilación sin legislación actual, incapaz de proporcionar dicha seguridad. los usuarios solo pueden confiar en la ética que la empresa les proyecta 
+[ABSTRACT]
+El internet de las cosas (loT) aunucia una nueva era de la informática en la que cada objeto  imaginable está equipado o conectado a un dispositivo inteligente que permite la recopilación de datos y la comunicación de éstos a través de internet.
+El lot desafía la privacidad del individuo con el fin de recopilar y usar los datos generados por las personas.
+
+[ABSTRACT]
+Estudio general de los problemas de seguridad encontrados en la loT, centrado en las lagunas que surgen e las tecnologías de intercambio de información usadas por loT (No se analiza ninguna medida para contrarrestar dichos inconvenientes de seguridad).
+
+-----------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------------
 Origen:
 	https://es.wikipedia.org/wiki/Internet_de_las_cosas
 
