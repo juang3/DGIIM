@@ -32,11 +32,10 @@ la limitación del rango en cada nodo produce un relé de información multihop 
 ### Radio Frequency Identification (RFID), identificación por radiofrecuencia.
 Esta tecnología está utiliza los transponedores como medio de almacenamiento y recuperación de datos. 
 Un RFID es una etiqueta que consta de una antena incrustada en un micropocesador, memoria para almacenar su identificador universal EPC (código de producto electrónico), es usada para transmitir la identidad de un dispositivo mediante ondas de radio, sin la necesidad de contacto visual entre los dispositivos.
- * Las *etiquetas activas*
-
-Las etiquetas activas llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
-La etiqueta pasiva transmite la información de su EPC cuando un lector de etiquetas le induce corriente, activando el circuito.
-El lector funciona como detector de etiquetas por su interacción con los EPC  
+ * Las __etiquetas activas__ llevan una batería para facilitar la itecacción de su EPC con los EPC circundantes aunque su radio de acción es limitado.
+ * Las __etiquetas pasivas__ transmiten la información de su EPC cuando un lector de etiquetas le induce corriente, activando el circuito.
+ * El __lector__ funciona como detector de etiquetas por su interacción con los EPC
+ 
 -----------------------------------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------------------------------
 Basados en le concepto de comunicación de un dispositivo a otro (D2D) de Bill Joy [2]
